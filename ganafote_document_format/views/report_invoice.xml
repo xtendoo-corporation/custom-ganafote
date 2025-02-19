@@ -8,7 +8,7 @@
 
                 <t t-if="o.company_id.id == 1">
                     <t t-set="colorbackground"
-                       t-value="'background-color:#83c200; display:inline;border-radius: 20px; padding: 5px 10px;'"/>
+                       t-value="'background-color:#C3C7C9; display:inline;border-radius: 20px; padding: 5px 10px;'"/>
                 </t>
                 <t t-if="o.company_id.id != 1">
                     <t t-set="colorbackground"
@@ -208,7 +208,7 @@
                 >
                     <t t-if="o.company_id.id == 1">
                         <p
-                            style="border: 2px solid #83c200; border-radius:20px; display:inline-block;text-align:center; padding:10px 20px; margin-top:5px;"
+                            style="border: 2px solid #C3C7C9; border-radius:20px; display:inline-block;text-align:center; padding:10px 20px; margin-top:5px;"
                         >CUENTA GAÑAFOTE SLU = IBAN ES74 0049 0012 7123 1219 3764
                         </p>
                     </t>

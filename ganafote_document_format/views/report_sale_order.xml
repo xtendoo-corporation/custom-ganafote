@@ -7,7 +7,7 @@
         <xpath expr="//h2[@class='mt-4']" position="replace">
             <t t-if="doc.company_id.id == 1">
                 <t t-set="colorbackground"
-                   t-value="'color:#ffffff; background-color:#83c200; display:inline;border-radius: 20px; padding: 10px 20px;'" />
+                   t-value="'color:#ffffff; background-color:#C3C7C9; display:inline;border-radius: 20px; padding: 10px 20px;'" />
             </t>
             <t t-if="doc.company_id.id != 1">
                 <t t-set="colorbackground"
@@ -171,7 +171,7 @@
                             >
                                 <t t-if="doc.company_id.id == 1">
                                     <p
-                                        style="border: 2px solid #83c200; border-radius:20px; display:inline-block;text-align:center; padding:10px 20px; margin-top:5px;"
+                                        style="border: 2px solid #C3C7C9; border-radius:20px; display:inline-block;text-align:center; padding:10px 20px; margin-top:5px;"
                                     >CUENTA GAÑAFOTE SLU = IBAN ES74 0049 0012 7123 1219 3764
                                     </p>
                                 </t>
@@ -191,7 +191,7 @@
                                     <div style="width:100%;margin-top:10px;">
                                         <div>
                                             <p
-                                                style="background-color:#83c200;width:50%;display:block;border-radius: 20px;padding: 10px 20px;font-weight:bolder;"
+                                                style="background-color:#C3C7C9;width:50%;display:block;border-radius: 20px;padding: 10px 20px;font-weight:bolder;"
                                             >Condiciones tras la aceptación del presupuesto
                                             </p>
                                         </div>
@@ -248,7 +248,7 @@
                                         </ol>
                                         <div>
                                             <p
-                                                style="background-color:#83c200;width:50%;display:block;border-radius: 20px;padding: 10px 20px;font-weight:bolder;"
+                                                style="background-color:#C3C7C9;width:50%;display:block;border-radius: 20px;padding: 10px 20px;font-weight:bolder;"
                                             >Condiciones para tramitación de incidencias
                                             </p>
                                         </div>
@@ -300,7 +300,7 @@
 
             <t t-if="doc.company_id.id == 1">
                 <div
-                    style="border: 2px solid #83c200; border-radius:20px;display:inline-flex;text-align:center; padding:10px 20px; margin-top: 30px;">
+                    style="border: 2px solid #C3C7C9; border-radius:20px;display:inline-flex;text-align:center; padding:10px 20px; margin-top: 30px;">
                     Términos y condiciones: https://ganafote16.xtendoo.es/terms
                 </div>
             </t>
