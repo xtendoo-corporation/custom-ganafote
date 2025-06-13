@@ -12,7 +12,7 @@
                 </t>
                 <t t-if="o.company_id.id != 1">
                     <t t-set="colorbackground"
-                       t-value="'background-color:#006eb7; display:inline;border-radius: 20px; padding: 5px 10px;'"/>
+                       t-value="'background-color:#222036; display:inline;border-radius: 20px; padding: 5px 10px;'"/>
                 </t>
 
                 <h2 style="color:#ffffff;">
