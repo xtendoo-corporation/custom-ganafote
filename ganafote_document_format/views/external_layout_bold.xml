@@ -34,7 +34,7 @@
             <xpath expr="//div[hasclass('col-1')]" position="replace">
                 <div class="col-12">
                     <img
-                        style="width:100%;height:151px;margin-top:-25px;"
+                        style="width:100%;height:200px;margin-top:-25px;"
                         src="/ganafote_document_format/static/src/img/ganafote-footer-sin-logo.png"
                     />
                 </div>
