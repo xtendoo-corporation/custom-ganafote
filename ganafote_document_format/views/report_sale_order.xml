@@ -7,11 +7,11 @@
         <xpath expr="//h2[@class='mt-4']" position="replace">
             <t t-if="doc.company_id.id == 1">
                 <t t-set="colorbackground"
-                   t-value="'color:#ffffff; background-color:#C3C7C9; display:inline;border-radius: 20px; padding: 10px 20px;'" />
+                   t-value="'color:#ffffff; background-color:#C3C7C9; display:inline;border-radius: 20px; padding: 5px 10px;'" />
             </t>
             <t t-if="doc.company_id.id != 1">
                 <t t-set="colorbackground"
-                   t-value="'color:#ffffff; background-color:#222036; display:inline;border-radius: 20px; padding: 10px 20px;'" />
+                   t-value="'color:#ffffff; background-color:#222036; display:inline;border-radius: 20px; padding: 5px 10px;'" />
             </t>
 
             <h2 class="mt16" t-att-style="colorbackground">
