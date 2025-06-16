@@ -5,7 +5,7 @@
             inherit_id="web.external_layout_bold"
         >
             <xpath expr="//div[hasclass('o_clean_header')]" position="replace">
-                <div class="o_clean_header" style="margin-bottom: 30px;">
+                <div class="o_clean_header">
                     <div class="row">
                         <div class="col-6">
                             <img
@@ -15,7 +15,7 @@
                                 style="max-height:150px; max-width:300px; margin-bottom:20px;"
                             />
                         </div>
-                        <div class="col-5 offset-1" name="company_address" style="line-height: 1.5; margin-top: 10px;">
+                        <div class="col-5 offset-1" name="company_address" style="line-height: 1.5; margin-top: 20px;">
                             <span t-if="company.company_details" t-field="company.company_details"/>
                         </div>
 
