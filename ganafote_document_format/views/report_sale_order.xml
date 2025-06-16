@@ -177,7 +177,7 @@
                                 </t>
                                 <t t-if="doc.company_id.id != 1">
                                     <p
-                                        style="border: 2px solid #006eb7; border-radius:20px; display:inline-block;text-align:center; padding:10px 20px; margin-top:5px;"
+                                        style="border: 2px solid #222036; border-radius:20px; display:inline-block;text-align:center; padding:10px 20px; margin-top:5px;"
                                     >CUENTA GAÑAFOTE SPORTS EVENTS = IBAN ES34 0049 0012 7321 1219 3772
                                     </p>
                                 </t>
@@ -306,7 +306,7 @@
             </t>
             <t t-if="doc.company_id.id != 1">
                 <div
-                    style="border: 2px solid #006eb7; border-radius:20px;display:inline-flex;text-align:center; padding:10px 20px; margin-top: 30px;">
+                    style="border: 2px solid #222036; border-radius:20px;display:inline-flex;text-align:center; padding:10px 20px; margin-top: 30px;">
                     Términos y condiciones: https://ganafote16.xtendoo.es/terms
                 </div>
             </t>
