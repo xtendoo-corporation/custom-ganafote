@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   version="1.1"
+   id="svg1"
+   width="604.79999"
+   height="151.03999"
+   viewBox="0 0 604.79999 151.03999"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1">
+    <rect
+       x="463.49796"
+       y="50.513767"
+       width="137.88895"
+       height="72.357559"
+       id="rect2" />
+    <rect
+       x="11.604514"
+       y="31.400452"
+       width="99.225044"
+       height="31.669449"
+       id="rect1" />
+  </defs>
+  <g
+     id="layer1">
+    <text
+       xml:space="preserve"
+       id="text1"
+       style="text-align:start;writing-mode:lr-tb;direction:ltr;white-space:pre;shape-inside:url(#rect1);fill:#000000;stroke-width:2.01159;stroke-dasharray:none"
+       transform="matrix(1.4644973,0,0,1.4589176,-14.244034,12.654655)"><tspan
+         x="11.605469"
+         y="42.017578"
+         id="tspan4"><tspan
+           style="font-weight:300;font-family:'DIN Next LT Arabic';-inkscape-font-specification:'DIN Next LT Arabic Light';fill:#666666"
+           id="tspan3">ganafote.com
+</tspan></tspan><tspan
+         x="11.605469"
+         y="57.134766"
+         id="tspan6"><tspan
+           style="font-weight:300;font-family:'DIN Next LT Arabic';-inkscape-font-specification:'DIN Next LT Arabic Light';fill:#666666"
+           id="tspan5">ganafote_custom</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       id="text2"
+       style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;font-family:'DIN Next LT Arabic';-inkscape-font-specification:'DIN Next LT Arabic Light';text-align:start;writing-mode:lr-tb;direction:ltr;white-space:pre;shape-inside:url(#rect2);fill:#666666;stroke-width:3.38;stroke-dasharray:none"
+       transform="matrix(1.6145939,0,0,1.4266365,-229.85103,-26.593825)"><tspan
+         x="463.49805"
+         y="61.013672"
+         id="tspan7">CUSTOM
+</tspan><tspan
+         x="463.49805"
+         y="76.013672"
+         id="tspan8">STUFF
+</tspan><tspan
+         x="463.49805"
+         y="91.013672"
+         id="tspan9">CLOTHING</tspan></text>
+  </g>
+</svg>
