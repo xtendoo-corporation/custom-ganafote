@@ -5,7 +5,7 @@
             inherit_id="web.external_layout_bold"
         >
             <xpath expr="//div[hasclass('o_clean_header')]" position="replace">
-                <div class="o_clean_header">
+                <div class="o_clean_header" style="margin-bottom: 30px;">
                     <div class="row">
                         <div class="col-6">
                             <img
