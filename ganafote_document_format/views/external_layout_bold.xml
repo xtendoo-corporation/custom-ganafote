@@ -22,7 +22,7 @@
                     </div>
                 </div>
                 <div
-                    style="height:2px;width:100%;background-color:black;margin-top:2px;"
+                    style="height:2px;width:100%;background-color:black;margin-top:10px;"
                 >
                 </div>
             </xpath>
