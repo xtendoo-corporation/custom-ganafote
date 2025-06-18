@@ -214,7 +214,7 @@
                     </t>
                     <t t-if="o.company_id.id == 2">
                         <p
-                            style="border:2px solid #006eb7;border-radius:20px; display:inline-block;text-align:center; padding:10px 20px; margin-top:5px;"
+                            style="border:2px solid #222036;border-radius:20px; display:inline-block;text-align:center; padding:10px 20px; margin-top:5px;"
                         >CUENTA GAÑAFOTE SPORTS EVENTS = IBAN ES34 0049 0012 7321 1219 3772
                         </p>
                     </t>
