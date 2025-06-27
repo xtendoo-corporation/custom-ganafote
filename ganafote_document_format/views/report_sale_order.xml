@@ -13,6 +13,7 @@
                 <t t-set="colorbackground"
                    t-value="'color:#ffffff; background-color:#222036; display:inline;border-radius: 20px; padding: 7.5px 10px;'" />
             </t>
+            <p></p>
 
             <h2 class="mt16" t-att-style="colorbackground">
                 <t t-if="not (env.context.get('proforma', False) or is_pro_forma)">
