@@ -204,18 +204,18 @@
                 </div>
                 <br/>
                 <div
-                    style="margin-top:5px; text-align: center;"
+                    style="margin-top:5px; text-align: center; white-space: nowrap; page-break-inside: avoid;"
                 >
                     <t t-if="o.company_id.id == 1">
                         <p
                             style="border: 2px solid #C3C7C9; border-radius:20px; display:inline-block;text-align:center; padding:10px 20px; margin-top:5px; white-space: nowrap; font-size: 12px;"
-                        >CUENTA GAÑAFOTE SLU = IBAN ES74 0049 0012 7123 1219 3764
+                        ><span style="white-space: nowrap;">CUENTA&nbsp;GAÑAFOTE&nbsp;SLU&nbsp;=&nbsp;IBAN&nbsp;ES74&nbsp;0049&nbsp;0012&nbsp;7123&nbsp;1219&nbsp;3764</span>
                         </p>
                     </t>
                     <t t-if="o.company_id.id == 2">
                         <p
                             style="border:2px solid #222036;border-radius:20px; display:inline-block;text-align:center; padding:10px 20px; margin-top:5px; white-space: nowrap; font-size: 12px;"
-                        >CUENTA GAÑAFOTE SPORTS EVENTS = IBAN ES34 0049 0012 7321 1219 3772
+                        ><span style="white-space: nowrap;">CUENTA&nbsp;GAÑAFOTE&nbsp;SPORTS&nbsp;EVENTS&nbsp;=&nbsp;IBAN&nbsp;ES34&nbsp;0049&nbsp;0012&nbsp;7321&nbsp;1219&nbsp;3772</span>
                         </p>
                     </t>
                 </div>
