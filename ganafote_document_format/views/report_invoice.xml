@@ -204,18 +204,18 @@
                 </div>
                 <br/>
                 <div
-                    style="margin-top:5px; text-align: center; white-space: nowrap; page-break-inside: avoid;"
+                    style="margin-top:5px; text-align: center; page-break-inside: avoid; display: flex; justify-content: center; flex-wrap: wrap;"
                 >
                     <t t-if="o.company_id.id == 1">
                         <p
-                            style="border: 2px solid #C3C7C9; border-radius:20px; display:inline-block;text-align:center; padding:10px 20px; margin-top:5px; white-space: nowrap; font-size: 12px;"
-                        ><span style="white-space: nowrap;">CUENTA&nbsp;GAÑAFOTE&nbsp;SLU&nbsp;=&nbsp;IBAN&nbsp;ES74&nbsp;0049&nbsp;0012&nbsp;7123&nbsp;1219&nbsp;3764</span>
+                            style="border: 2px solid #C3C7C9; border-radius:20px; display:inline-block;text-align:center; padding:10px 20px; margin-top:5px; font-size: 12px; white-space: normal; max-width: 100%;"
+                        ><span style="display: inline-block; white-space: nowrap;">CUENTA&#160;GAÑAFOTE&#160;SLU&#160;=&#160;IBAN&#160;ES74&#160;0049&#160;0012&#160;7123&#160;1219&#160;3764</span>
                         </p>
                     </t>
                     <t t-if="o.company_id.id == 2">
                         <p
-                            style="border:2px solid #222036;border-radius:20px; display:inline-block;text-align:center; padding:10px 20px; margin-top:5px; white-space: nowrap; font-size: 12px;"
-                        ><span style="white-space: nowrap;">CUENTA&nbsp;GAÑAFOTE&nbsp;SPORTS&nbsp;EVENTS&nbsp;=&nbsp;IBAN&nbsp;ES34&nbsp;0049&nbsp;0012&nbsp;7321&nbsp;1219&nbsp;3772</span>
+                            style="border:2px solid #222036;border-radius:20px; display:inline-block;text-align:center; padding:10px 20px; margin-top:5px; font-size: 12px; white-space: normal; max-width: 100%;"
+                        ><span style="display: inline-block; white-space: nowrap;">CUENTA&#160;GAÑAFOTE&#160;SPORTS&#160;EVENTS&#160;=&#160;IBAN&#160;ES34&#160;0049&#160;0012&#160;7321&#160;1219&#160;3772</span>
                         </p>
                     </t>
                 </div>
