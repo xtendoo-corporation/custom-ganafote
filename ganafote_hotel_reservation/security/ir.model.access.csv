@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_allotment_user,ganafote.hotel.allotment user,model_ganafote_hotel_allotment,group_hotel_user,1,0,0,0
+access_allotment_manager,ganafote.hotel.allotment manager,model_ganafote_hotel_allotment,group_hotel_manager,1,1,1,1
+access_allotment_line_user,ganafote.hotel.allotment.line user,model_ganafote_hotel_allotment_line,group_hotel_user,1,0,0,0
+access_allotment_line_manager,ganafote.hotel.allotment.line manager,model_ganafote_hotel_allotment_line,group_hotel_manager,1,1,1,1
+access_availability_user,ganafote.hotel.availability user,model_ganafote_hotel_availability,group_hotel_user,1,1,0,0
+access_availability_manager,ganafote.hotel.availability manager,model_ganafote_hotel_availability,group_hotel_manager,1,1,1,1

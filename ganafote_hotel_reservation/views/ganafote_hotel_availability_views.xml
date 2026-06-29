@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_availability_list" model="ir.ui.view">
+        <field name="name">ganafote.hotel.availability.list</field>
+        <field name="model">ganafote.hotel.availability</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="hotel_id"/>
+                <field name="product_id"/>
+                <field name="date"/>
+                <field name="total_qty" sum="Cupo total"/>
+                <field name="reserved_qty" sum="Reservado"/>
+                <field name="available_qty" sum="Disponible"
+                       decoration-danger="available_qty &lt;= 0"
+                       decoration-success="available_qty &gt; 0"/>
+                <field name="allotment_id" optional="show"/>
+                <field name="company_id" groups="base.group_multi_company"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_availability_search" model="ir.ui.view">
+        <field name="name">ganafote.hotel.availability.search</field>
+        <field name="model">ganafote.hotel.availability</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="hotel_id"/>
+                <field name="product_id"/>
+                <field name="date"/>
+                <filter name="positive" string="Con disponibilidad"
+                        domain="[('available_qty', '>', 0)]"/>
+                <filter name="exhausted" string="Sin disponibilidad"
+                        domain="[('available_qty', '&lt;=', 0)]"/>
+                <group>
+                    <filter name="group_by_hotel" string="Hotel"
+                            context="{'group_by': 'hotel_id'}"/>
+                    <filter name="group_by_product" string="Producto"
+                            context="{'group_by': 'product_id'}"/>
+                    <filter name="group_by_date" string="Noche"
+                            context="{'group_by': 'date'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_availability" model="ir.actions.act_window">
+        <field name="name">Disponibilidad</field>
+        <field name="res_model">ganafote.hotel.availability</field>
+        <field name="view_mode">list</field>
+        <field name="context">{'search_default_positive': 1, 'search_default_group_by_product': 1}</field>
+    </record>
+
+</odoo>

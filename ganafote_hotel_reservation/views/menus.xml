@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <menuitem id="menu_hotel_root"
+              name="Reservas Hoteleras"
+              sequence="80"
+              groups="group_hotel_user"/>
+
+    <menuitem id="menu_hotel_allotment"
+              name="Cupos hoteleros"
+              parent="menu_hotel_root"
+              action="action_allotment"
+              sequence="10"/>
+
+    <menuitem id="menu_hotel_availability"
+              name="Disponibilidad"
+              parent="menu_hotel_root"
+              action="action_availability"
+              sequence="20"/>
+
+    <menuitem id="menu_hotel_booking"
+              name="Reservas hoteleras"
+              parent="menu_hotel_root"
+              action="action_hotel_reservations"
+              sequence="30"/>
+
+    <menuitem id="menu_hotel_products"
+              name="Productos hoteleros"
+              parent="menu_hotel_root"
+              action="action_product_hotel"
+              sequence="40"/>
+
+</odoo>

@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_allotment_list" model="ir.ui.view">
+        <field name="name">ganafote.hotel.allotment.list</field>
+        <field name="model">ganafote.hotel.allotment</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="hotel_id"/>
+                <field name="date_start"/>
+                <field name="date_end"/>
+                <field name="company_id" groups="base.group_multi_company"/>
+                <field name="state"
+                       decoration-success="state == 'confirmed'"
+                       decoration-muted="state == 'cancelled'"
+                       widget="badge"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_allotment_form" model="ir.ui.view">
+        <field name="name">ganafote.hotel.allotment.form</field>
+        <field name="model">ganafote.hotel.allotment</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_confirm" type="object" string="Confirmar"
+                            class="btn-primary" invisible="state != 'draft'"/>
+                    <button name="action_cancel" type="object" string="Cancelar"
+                            invisible="state == 'cancelled'"/>
+                    <button name="action_draft" type="object" string="A borrador"
+                            invisible="state != 'cancelled'"/>
+                    <field name="state" widget="statusbar"
+                           statusbar_visible="draft,confirmed"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_view_availability" type="object"
+                                class="oe_stat_button" icon="fa-calendar"
+                                invisible="availability_count == 0">
+                            <field name="availability_count" widget="statinfo"
+                                   string="Disponibilidad"/>
+                        </button>
+                        <button name="action_view_bookings" type="object"
+                                class="oe_stat_button" icon="fa-bed"
+                                invisible="booking_count == 0">
+                            <field name="booking_count" widget="statinfo"
+                                   string="Reservas"/>
+                        </button>
+                    </div>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" readonly="1"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="hotel_id"
+                                   readonly="state != 'draft'"/>
+                            <field name="company_id" groups="base.group_multi_company"/>
+                            <field name="currency_id" invisible="1"/>
+                        </group>
+                        <group>
+                            <field name="date_start" readonly="state != 'draft'"/>
+                            <field name="date_end" readonly="state != 'draft'"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Líneas de cupo" name="lines">
+                            <field name="line_ids" readonly="state == 'cancelled'">
+                                <list editable="bottom">
+                                    <field name="product_id"/>
+                                    <field name="date_start"/>
+                                    <field name="date_end"/>
+                                    <field name="quota_qty"/>
+                                    <field name="cost_price"/>
+                                    <field name="margin_type"/>
+                                    <field name="margin_value"/>
+                                    <field name="suggested_price"/>
+                                    <field name="final_price"/>
+                                    <field name="reserved_qty"/>
+                                    <field name="available_qty"/>
+                                    <field name="currency_id" column_invisible="1"/>
+                                    <field name="notes" optional="hide"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Notas" name="notes">
+                            <field name="notes"/>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_allotment_search" model="ir.ui.view">
+        <field name="name">ganafote.hotel.allotment.search</field>
+        <field name="model">ganafote.hotel.allotment</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="hotel_id"/>
+                <filter name="draft" string="Borrador"
+                        domain="[('state', '=', 'draft')]"/>
+                <filter name="confirmed" string="Confirmado"
+                        domain="[('state', '=', 'confirmed')]"/>
+                <filter name="cancelled" string="Cancelado"
+                        domain="[('state', '=', 'cancelled')]"/>
+                <group>
+                    <filter name="group_by_hotel" string="Hotel"
+                            context="{'group_by': 'hotel_id'}"/>
+                    <filter name="group_by_state" string="Estado"
+                            context="{'group_by': 'state'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_allotment" model="ir.actions.act_window">
+        <field name="name">Cupos hoteleros</field>
+        <field name="res_model">ganafote.hotel.allotment</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+</odoo>

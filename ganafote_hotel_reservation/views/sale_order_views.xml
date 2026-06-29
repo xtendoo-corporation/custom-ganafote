@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_order_form_hotel" model="ir.ui.view">
+        <field name="name">sale.order.form.hotel</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='order_line']/list/field[@name='product_uom_qty']"
+                   position="before">
+                <field name="is_hotel_line" column_invisible="1"/>
+                <field name="checkin_date" optional="show"
+                       readonly="not is_hotel_line"
+                       required="is_hotel_line"/>
+                <field name="checkout_date" optional="show"
+                       readonly="not is_hotel_line"
+                       required="is_hotel_line"/>
+                <field name="nights" optional="show" readonly="1"/>
+                <field name="room_qty" optional="show"
+                       readonly="not is_hotel_line"/>
+                <field name="availability_info" optional="show" readonly="1"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="action_hotel_reservations" model="ir.actions.act_window">
+        <field name="name">Reservas hoteleras</field>
+        <field name="res_model">sale.order</field>
+        <field name="view_mode">list,form</field>
+        <field name="domain">[('order_line.is_hotel_line', '=', True)]</field>
+        <field name="context">{'search_default_sales': 1}</field>
+    </record>
+
+</odoo>
