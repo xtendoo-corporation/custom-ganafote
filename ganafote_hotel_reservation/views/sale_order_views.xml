@@ -9,14 +9,14 @@
             <xpath expr="//field[@name='order_line']/list/field[@name='product_uom_qty']"
                    position="before">
                 <field name="is_hotel_line" column_invisible="1"/>
-                <field name="checkin_date" optional="show"
+                  <field name="checkin_date" string="F. entrada" optional="show"
                        readonly="not is_hotel_line"
                        required="is_hotel_line"/>
-                <field name="checkout_date" optional="show"
+                  <field name="checkout_date" string="F. salida" optional="show"
                        readonly="not is_hotel_line"
                        required="is_hotel_line"/>
-                <field name="nights" optional="show" readonly="1"/>
-                <field name="room_qty" optional="show"
+                  <field name="nights" string="Noches" optional="show" readonly="1"/>
+                  <field name="room_qty" string="habitaciones" optional="show"
                        readonly="not is_hotel_line"/>
                 <field name="availability_info" optional="show" readonly="1"/>
             </xpath>
