@@ -29,6 +29,7 @@ class GanafoteHotelAvailability(models.Model):
         string="Hotel",
         required=True,
         index=True,
+        domain="[('is_hotel', '=', True)]",
     )
     product_id = fields.Many2one(
         comodel_name="product.product",

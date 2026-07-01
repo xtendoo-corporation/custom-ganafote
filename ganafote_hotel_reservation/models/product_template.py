@@ -14,5 +14,6 @@ class ProductTemplate(models.Model):
     hotel_id = fields.Many2one(
         comodel_name="res.partner",
         string="Hotel",
+        domain="[('is_hotel', '=', True)]",
         help="Proveedor/hotel que cede las habitaciones de esta pernoctación.",
     )

@@ -38,6 +38,7 @@ sale.order.line) sin tablas intermedias.
         "security/ir.model.access.csv",
         "data/ganafote_data.xml",
         "views/product_template_views.xml",
+        "views/res_partner_views.xml",
         "views/ganafote_hotel_allotment_views.xml",
         "views/ganafote_hotel_availability_views.xml",
         "views/sale_order_views.xml",

@@ -21,6 +21,7 @@ class GanafoteHotelAllotment(models.Model):
         string="Hotel",
         required=True,
         tracking=True,
+        domain="[('is_hotel', '=', True)]",
     )
     date_start = fields.Date(string="Fecha inicio", required=True, tracking=True)
     date_end = fields.Date(string="Fecha fin", required=True, tracking=True)
