@@ -12,8 +12,8 @@
             <field name="model_id" ref="loyalty.model_loyalty_card"/>
             <field name="subject">Puntos actuales con {{ object.program_id.company_id.name }}</field>
             <field name="email_from">{{ object.program_id.company_id.email }}</field>
-            <field name="partner_to">{{ object._get_mail_partner().id }}</field>
-            <field name="lang">{{ object._get_mail_partner().lang }}</field>
+            <field name="partner_to">{{ object.partner_id.id }}</field>
+            <field name="lang">{{ object.partner_id.lang }}</field>
             <field name="description">Sent to customer with coupon information</field>
             <field name="body_html" type="html">
                 <div id="header">
@@ -34,8 +34,8 @@
                     style="clear:both;width:80%;margin:10px auto;font-size:1.5em;color:black;"
                 >
                     <div id="text_points">
-                        <t t-if="object._get_mail_partner().name">
-                            Felicidades <t t-out="object._get_mail_partner().name or ''">Brandon
+                        <t t-if="object.partner_id.name">
+                            Felicidades <t t-out="object.partner_id.name or ''">Brandon
                             Freeman</t>,
                             <br/>
                         </t>

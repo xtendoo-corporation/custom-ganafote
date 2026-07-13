@@ -86,7 +86,7 @@
                             </td>
                             <td name="td_quantity" style="text-align:right;">
                                 <span t-field="line.product_uom_qty"/>
-                                <span t-field="line.product_uom"/>
+                                <span t-field="line.product_uom_id"/>
                             </td>
                             <td name="td_priceunit" style="text-align:right;">
                                 <span t-field="line.price_unit"/>
@@ -325,7 +325,8 @@
             </div>
 
         </xpath>
-        <xpath expr="//p[@t-if='not is_html_empty(doc.payment_term_id.note)']" position="replace">
+        <xpath expr="//p[@t-if='not is_html_empty(doc.payment_term_id.note)']" position="attributes">
+            <attribute name="style">display:none</attribute>
         </xpath>
     </template>
 </odoo>
