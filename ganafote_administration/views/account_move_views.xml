@@ -1,6 +1,6 @@
 <odoo>
     <record id="account_move_is_delivered_tree" model="ir.ui.view">
-        <field name="name">account.move_is.delivered.tree</field>
+        <field name="name">account.move_is.delivered.list</field>
         <field name="model">account.move</field>
         <field name="inherit_id" ref="account.view_invoice_tree" />
         <field name="arch" type="xml">

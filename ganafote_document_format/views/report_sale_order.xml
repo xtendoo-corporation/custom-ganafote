@@ -4,33 +4,33 @@
         inherit_id="sale.report_saleorder_document"
     >
         <xpath expr="//t[@t-set='information_block']" position="replace"/>
-        <xpath expr="//h2[hasclass('mt-4')]" position="replace">
-            <t t-if="doc.company_id.id == 1">
-                <t t-set="colorbackground"
-                   t-value="'color:#ffffff; background-color:#C3C7C9; display:inline;border-radius: 20px; padding: 7.5px 10px;'" />
-            </t>
-            <t t-if="doc.company_id.id != 1">
-                <t t-set="colorbackground"
-                   t-value="'color:#ffffff; background-color:#222036; display:inline;border-radius: 20px; padding: 7.5px 10px;'" />
-            </t>
-            <p></p>
-
-            <h2 class="mt16" t-att-style="colorbackground">
-                <t t-if="not (env.context.get('proforma', False) or is_pro_forma)">
-                    <span
-                        t-if="doc.state not in ['draft','sent']"
-                    >PEDIDO
-                    </span>
-                    <span
-                        t-if="doc.state in ['draft','sent']"
-                    >PRESUPUESTO
-                    </span>
+        <xpath expr="//t[@t-set='layout_document_title']" position="replace">
+            <t t-set="layout_document_title">
+                <t t-if="doc.company_id.id == 1">
+                    <t t-set="colorbackground"
+                       t-value="'color:#ffffff; background-color:#C3C7C9; display:inline;border-radius: 20px; padding: 7.5px 10px;'" />
                 </t>
-                <t t-if="env.context.get('proforma', False) or is_pro_forma">
-                    <span>FACTURA PRO-FORMA</span>
+                <t t-if="doc.company_id.id != 1">
+                    <t t-set="colorbackground"
+                       t-value="'color:#ffffff; background-color:#222036; display:inline;border-radius: 20px; padding: 7.5px 10px;'" />
                 </t>
-                <span t-field="doc.name"/>
-            </h2>
+                <span t-att-style="colorbackground">
+                    <t t-if="not (env.context.get('proforma', False) or is_pro_forma)">
+                        <span
+                            t-if="doc.state not in ['draft','sent']"
+                        >PEDIDO
+                        </span>
+                        <span
+                            t-if="doc.state in ['draft','sent']"
+                        >PRESUPUESTO
+                        </span>
+                    </t>
+                    <t t-if="env.context.get('proforma', False) or is_pro_forma">
+                        <span>FACTURA PRO-FORMA</span>
+                    </t>
+                    <span t-field="doc.name"/>
+                </span>
+            </t>
         </xpath>
         <xpath expr="//table/thead" position="replace">
             <thead style="display: table-row-group">

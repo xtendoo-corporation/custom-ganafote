@@ -6,7 +6,7 @@
     "author": "DDL-Xtendoo, Odoo Community Association (OCA)",
     "company": "Xtendoo",
     "summary": "Ganafote Administration",
-    "version": "17.0.1.0.0",
+    "version": "18.0.1.0.0",
     "category": "Extra-tools",
     "website": "https://github.com/OCA/contract",
     "depends": [
