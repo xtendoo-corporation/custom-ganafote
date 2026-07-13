@@ -9,7 +9,7 @@
           name="is_delivered"
           optional="hide"
           widget="boolean_toggle"
-          attrs="{'readonly': [('state', '!=', 'posted')]}"
+          readonly="state != 'posted'"
         />
             </xpath>
         </field>

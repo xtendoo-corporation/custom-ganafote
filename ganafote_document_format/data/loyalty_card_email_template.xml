@@ -2,7 +2,7 @@
 <odoo>
     <!-- Mail template are declared in a NOUPDATE block
         so users can freely customize/delete them -->
-    <data noupdate="0">
+    <data>
         <!--Email template -->
         <record
             id="ganafote_document_format.loyalty_card_email_template"
@@ -122,8 +122,6 @@
                 </div>
 
             </field>
-            <field name="report_template" ref=""/>
-            <field name="report_name"></field>
             <field name="auto_delete" eval="True"/>
         </record>
     </data>

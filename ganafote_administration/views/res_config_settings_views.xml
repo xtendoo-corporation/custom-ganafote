@@ -4,42 +4,28 @@
         id="res_config_settings_view_form"
         inherit_id="sale_management.res_config_settings_view_form"
     >
-            <xpath expr="//div[@id='design_quotation_template_setting']" position="after">
-                <div
-                    class="col-12 col-lg-6 o_setting_box"
-                    id="company_so_factory_template_setting"
-                >
-                    <div class="o_setting_right_pane">
-                        <label for="company_so_factory_template_id"/>
-                        <field name="company_so_factory_template_id"/>
-                    </div>
-                </div>
+            <xpath expr="//setting[@id='standardized_offers_setting']" position="after">
+                <setting id="company_so_factory_template_setting" string="Factory Default Template">
+                    <field name="company_so_factory_template_id"/>
+                </setting>
             </xpath>
          </template>
     <template
         id="res_config_settings_view_form_account_move"
         inherit_id="account.res_config_settings_view_form"
     >
-        <div id="default_setting_options" position="inside">
-<!--             <h2>Email de entrega</h2>-->
-            <!--                <div-->
-                    <div class="col-12 col-lg-6 o_setting_box"
-                    id="confirmation_email_setting"
-
-                >
-                    <div class="o_setting_right_pane">
-                        <label
-                            for="send_invoice_mail_template_id"
-                            class="o_light_label"
-                        />
-                        <field
-                            name="send_invoice_mail_template_id"
-                            class="oe_inline"
-                            options="{'no_create': True}"
-                        />
-                    </div>
-                    </div>
-
+        <div id="send_default" position="inside">
+            <div id="confirmation_email_setting">
+                <label
+                    for="send_invoice_mail_template_id"
+                    class="o_light_label"
+                />
+                <field
+                    name="send_invoice_mail_template_id"
+                    class="oe_inline"
+                    options="{'no_create': True}"
+                />
+            </div>
         </div>
 <!--            <xpath-->
 <!--                expr="//div[hasclass('app_settings_block')][@data-key='account']"-->

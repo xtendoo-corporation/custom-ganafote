@@ -2,7 +2,7 @@
 <odoo>
      <!-- Mail template are declared in a NOUPDATE block
          so users can freely customize/delete them -->
-    <data noupdate="0">
+    <data>
         <!--Email template -->
         <record
       id="ganafote_document_format.email_template_quotation_to_factory"
@@ -80,8 +80,7 @@
 
                 </div>
             </field>
-            <field name="report_name">{{ (object.name or '').replace('/','_') }}</field>
-            <field name="report_template" ref="sale.action_report_saleorder" />
+            <field name="report_template_ids" eval="[(6, 0, [ref('sale.action_report_saleorder')])]"/>
             <field name="lang">${object.partner_id.lang}</field>
             <field name="use_default_to" eval="False" />
             <field name="partner_to">{{ object.partner_id.id }}</field>

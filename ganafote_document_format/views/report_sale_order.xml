@@ -4,7 +4,7 @@
         inherit_id="sale.report_saleorder_document"
     >
         <xpath expr="//t[@t-set='information_block']" position="replace"/>
-        <xpath expr="//h2[@class='mt-4']" position="replace">
+        <xpath expr="//h2[hasclass('mt-4')]" position="replace">
             <t t-if="doc.company_id.id == 1">
                 <t t-set="colorbackground"
                    t-value="'color:#ffffff; background-color:#C3C7C9; display:inline;border-radius: 20px; padding: 7.5px 10px;'" />

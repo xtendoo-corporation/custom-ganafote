@@ -1,7 +1,7 @@
 {
     "name": "Document Format Gañafote",
     "summary": """Formatos de documentos para Gañafote""",
-    "version": "16.0.1.0.0",
+    "version": "17.0.1.0.0",
     "author": "Daniel Dominguez",
     "company": "Xtendoo",
     "website": "https://github.com/OCA/contract",

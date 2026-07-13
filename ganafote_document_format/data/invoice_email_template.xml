@@ -2,7 +2,7 @@
 <odoo>
     <!-- Mail template are declared in a NOUPDATE block
         so users can freely customize/delete them -->
-    <data noupdate="0">
+    <data>
         <!--Email template -->
         <record
             id="ganafote_document_format.invoice_email_template"
@@ -75,8 +75,7 @@
                     </a>
                 </div>
             </field>
-            <field name="report_name">{{ (object.name or '').replace('/','_') }}</field>
-            <field name="report_template" ref="account.account_invoices"/>
+            <field name="report_template_ids" eval="[(6, 0, [ref('account.account_invoices')])]"/>
             <field name="lang">${object.partner_id.lang}</field>
             <field name="use_default_to" eval="False"/>
             <field name="partner_to">{{ object.partner_id.id }}</field>
@@ -193,8 +192,7 @@
                     </a>
                 </div>
             </field>
-            <field name="report_name">{{ (object.name or '').replace('/','_') }}</field>
-            <field name="report_template" ref="account.account_invoices"/>
+            <field name="report_template_ids" eval="[(6, 0, [ref('account.account_invoices')])]"/>
             <field name="lang">${object.partner_id.lang}</field>
             <field name="use_default_to" eval="False"/>
             <field name="partner_to">{{ object.partner_id.id }}</field>
@@ -305,8 +303,7 @@
                     </a>
                 </div>
             </field>
-            <field name="report_name">{{ (object.name or '').replace('/','_') }}</field>
-            <field name="report_template" ref="account.account_invoices"/>
+            <field name="report_template_ids" eval="[(6, 0, [ref('account.account_invoices')])]"/>
             <field name="lang">${object.partner_id.lang}</field>
             <field name="use_default_to" eval="False"/>
             <field name="partner_to">{{ object.partner_id.id }}</field>

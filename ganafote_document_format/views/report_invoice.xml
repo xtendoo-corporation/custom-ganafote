@@ -4,7 +4,7 @@
         <field name="name">ganafote.report.invoice.document</field>
         <field name="inherit_id" ref="account.report_invoice_document" />
         <field name="arch" type="xml">
-            <xpath expr="//div[@class='page']/h2" position="replace">
+            <xpath expr="//div[hasclass('page')]/h2" position="replace">
 
                 <t t-if="o.company_id.id == 1">
                     <t t-set="colorbackground"
@@ -192,7 +192,7 @@
             <xpath expr="//p[@name='payment_communication']" position="attributes">
                 <attribute name="style">margin-top: 5px;</attribute>
             </xpath>
-            <xpath expr="//div[@name='payment_term']" position="after">
+            <xpath expr="//div[@id='payment_term']" position="after">
                 <div style="font-size:11px; margin-top:15px; page-break-inside: avoid;">
                     <span style="font-weight:bolder;">Información sobre protección de datos:</span>
                     Como responsable del tratamiento le informamos que recabamos sus datos con la
