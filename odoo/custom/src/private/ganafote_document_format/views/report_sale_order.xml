@@ -1,0 +1,341 @@
+<odoo>
+    <template
+        id="ganafote_report_saleorder_document"
+        inherit_id="sale.report_saleorder_document"
+    >
+        <xpath expr="//t[@t-set='information_block']" position="replace" />
+        <xpath expr="//t[@t-set='layout_document_title']" position="replace">
+            <t t-set="layout_document_title">
+                <t t-if="doc.company_id.id == 1">
+                    <t
+                        t-set="colorbackground"
+                        t-value="'color:#ffffff; background-color:#C3C7C9; display:inline;border-radius: 20px; padding: 7.5px 10px;'"
+                    />
+                </t>
+                <t t-if="doc.company_id.id != 1">
+                    <t
+                        t-set="colorbackground"
+                        t-value="'color:#ffffff; background-color:#222036; display:inline;border-radius: 20px; padding: 7.5px 10px;'"
+                    />
+                </t>
+                <span t-att-style="colorbackground">
+                    <t t-if="not (env.context.get('proforma', False) or is_pro_forma)">
+                        <span t-if="doc.state not in ['draft','sent']">PEDIDO
+                        </span>
+                        <span t-if="doc.state in ['draft','sent']">PRESUPUESTO
+                        </span>
+                    </t>
+                    <t t-if="env.context.get('proforma', False) or is_pro_forma">
+                        <span>FACTURA PRO-FORMA</span>
+                    </t>
+                    <span t-field="doc.name" />
+                </span>
+            </t>
+        </xpath>
+        <xpath expr="//table/thead" position="replace">
+            <thead style="display: table-row-group">
+                <tr>
+                    <th name="th_description" style="text-align:left;">Descripción</th>
+                    <th name="th_quantity" style="text-align:right;">Cantidad</th>
+                    <th name="th_priceunit" style="text-align:right;">Precio/U</th>
+                    <th
+                        name="th_discount"
+                        t-if="display_discount"
+                        class="text-right"
+                        groups="product.group_discount_per_so_line"
+                    >
+                        <span>Desc.%</span>
+                    </th>
+                    <th name="th_subtotal" style="text-align:right;">
+                        <span
+                            groups="account.group_show_line_subtotals_tax_excluded"
+                        >Total
+                        </span>
+                        <span
+                            groups="account.group_show_line_subtotals_tax_included"
+                        >Total
+                        </span>
+                    </th>
+                </tr>
+            </thead>
+        </xpath>
+        <xpath expr="//table/tbody" position="replace">
+            <tbody class="sale_tbody">
+
+                <t t-set="current_subtotal" t-value="0" />
+
+                <t t-foreach="doc.order_line" t-as="line">
+
+                    <t
+                        t-set="current_subtotal"
+                        t-value="current_subtotal + line.price_subtotal"
+                        groups="account.group_show_line_subtotals_tax_excluded"
+                    />
+                    <t
+                        t-set="current_subtotal"
+                        t-value="current_subtotal + line.price_total"
+                        groups="account.group_show_line_subtotals_tax_included"
+                    />
+
+                    <tr
+                        t-att-class="'bg-200 font-weight-bold o_line_section' if line.display_type == 'line_section' else 'font-italic o_line_note' if line.display_type == 'line_note' else ''"
+                    >
+                        <t t-if="not line.display_type">
+                            <td name="td_name">
+                                <span t-field="line.name" />
+                            </td>
+                            <td name="td_quantity" style="text-align:right;">
+                                <span t-field="line.product_uom_qty" />
+                                <span t-field="line.product_uom_id" />
+                            </td>
+                            <td name="td_priceunit" style="text-align:right;">
+                                <span t-field="line.price_unit" />
+                            </td>
+                            <td
+                                t-if="display_discount"
+                                style="text-align:right;"
+                                groups="product.group_discount_per_so_line"
+                            >
+                                <span t-field="line.discount" />
+                            </td>
+                            <td
+                                name="td_subtotal"
+                                class="o_price_total"
+                                style="text-align:right;"
+                            >
+                                <span
+                                    t-field="line.price_subtotal"
+                                    groups="account.group_show_line_subtotals_tax_excluded"
+                                />
+                                <span
+                                    t-field="line.price_total"
+                                    groups="account.group_show_line_subtotals_tax_included"
+                                />
+                            </td>
+                        </t>
+                        <t t-if="line.display_type == 'line_section'">
+                            <td name="td_section_line" colspan="99">
+                                <span t-field="line.name" />
+                            </td>
+                            <t t-set="current_section" t-value="line" />
+                            <t t-set="current_subtotal" t-value="0" />
+                        </t>
+                        <t t-if="line.display_type == 'line_note'">
+                            <td name="td_note_line" colspan="99">
+                                <span t-field="line.name" />
+                            </td>
+                        </t>
+                    </tr>
+
+                    <t
+                        t-if="current_section and (line_last or doc.order_line[line_index+1].display_type == 'line_section')"
+                    >
+                        <tr class="is-subtotal text-right">
+                            <td name="td_section_subtotal" colspan="99">
+                                <strong class="mr16">Subtotal</strong>
+                                <span
+                                    t-esc="current_subtotal"
+                                    t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: doc.pricelist_id.currency_id}"
+                                />
+                            </td>
+                        </tr>
+                    </t>
+                </t>
+            </tbody>
+        </xpath>
+        <xpath expr="//div[hasclass('clearfix')]" position="after">
+            <div style="width:100%;display:block">
+                <table style="width:100%;border-color:white;">
+                    <t t-if="doc.company_id.id == 1">
+                        <tr>
+                            <td>
+                                <div style="width:100%;margin-top:10px;">
+                                    <div>
+                                        <p style="font-weight:bolder">OBSERVACIONES</p>
+                                    </div>
+                                    <p style="font-weight:bolder">DISEÑOS GRATUITOS.</p>
+                                    <p
+                                        style="display:block;width:100%;"
+                                    >*Los diseños son gratuitos siempre que lleve un pedido solicitado y aceptado por el
+                                        cliente. Incluidos nombre, número, logos de patrocinadores, eslogan,
+                                        leyendas...Todo cerrado en prendas sublimadas.
+                                        Todas las prendas vienen individualmente plastificadas y planchadas.
+                                    </p>
+                                    <p>
+                                        Plazos de entrega = una vez ingresado el 50%, pedido cerrado y diseños
+                                        aceptados, necesitamos 3-4 semanas.
+                                    </p>
+                                </div>
+                            </td>
+                        </tr>
+                    </t>
+                    <tr>
+                        <td>
+                            <div style="text-align: center;">
+                                <t t-if="doc.company_id.id == 1">
+                                    <p
+                                        style="border: 2px solid #C3C7C9; border-radius:20px; display:inline-block;text-align:center; padding:10px 20px; margin-top:5px;"
+                                    >CUENTA GAÑAFOTE SLU = IBAN ES74 0049 0012 7123 1219 3764
+                                    </p>
+                                </t>
+                                <t t-if="doc.company_id.id != 1">
+                                    <p
+                                        style="border: 2px solid #222036; border-radius:20px; display:inline-block;text-align:center; padding:10px 20px; margin-top:5px;"
+                                    >CUENTA GAÑAFOTE SPORTS EVENTS = IBAN ES34 0049 0012 7321 1219 3772
+                                    </p>
+                                </t>
+                            </div>
+                        </td>
+                    </tr>
+                    <t t-if="doc.company_id.id == 1">
+                        <tr>
+                            <td>
+                                <div style="width:100%;display:block">
+                                    <div style="width:100%;margin-top:10px;">
+                                        <div>
+                                            <p
+                                                style="background-color:#C3C7C9;width:50%;display:block;border-radius: 20px;padding: 10px 20px;font-weight:bolder;"
+                                            >Condiciones tras la aceptación del presupuesto
+                                            </p>
+                                        </div>
+                                        <ol>
+                                            <li style="margin-bottom: 15px;">
+                                                El cliente debe saber que las maquetaciones en 3D son una
+                                                aproximación
+                                                al diseño real.
+                                            </li>
+                                            <li style="margin-bottom: 15px;">
+                                                Los colores pueden tener alguna variación respecto al boceto
+                                                digital. El
+                                                cliente debe elegir
+                                                los pantones de color para los productos presupuestados.
+                                            </li>
+                                            <li style="margin-bottom: 15px;">
+                                                El cliente acepta el diseño 3D sabiendo que no podrá sufrir
+                                                variaciones
+                                                tras la aceptación.
+                                                Una vez el pedido es lanzado a fabrica no podrá verse modificado.
+                                            </li>
+                                            <li style="margin-bottom: 15px;">
+                                                El cliente revisará y dará visto bueno al pedido enviado por el área
+                                                de
+                                                administración.
+                                                Cualquier error del mismo, tras la revisión, será responsabilidad
+                                                del
+                                                cliente.
+                                            </li>
+                                            <li style="margin-bottom: 15px;">
+                                                Una vez aceptado el diseño y el pedido correspondiente, GAÑAFOTE SLU
+                                                no
+                                                se hará
+                                                responsable de los posibles errores tanto de ortografía, textos,
+                                                formas,
+                                                color, tamaño, talla,
+                                                logos, etc.
+                                            </li>
+                                            <li style="margin-bottom: 15px;">
+                                                Los tiempos de entregas será de 3 a 4 semanas en &quot;temporada
+                                                normal&quot;.
+                                                Los tiempos de
+                                                entregas puede verse incrementado en 1 o 2 semanas en &quot;temporada
+                                                alta&quot;.
+                                            </li>
+                                            <li style="margin-bottom: 15px;">
+                                                La tabla de medida es una referencia, las medidas para la selección
+                                                de
+                                                tallas pueden variar
+                                                0.50 o 1 cm con respecto al documento que se envía. Las tallas deben
+                                                medirse de la misma
+                                                forma que se indica en el documento.
+                                            </li>
+                                        </ol>
+                                        <div>
+                                            <p
+                                                style="background-color:#C3C7C9;width:50%;display:block;border-radius: 20px;padding: 10px 20px;font-weight:bolder;"
+                                            >Condiciones para tramitación de incidencias
+                                            </p>
+                                        </div>
+                                        <ol>
+                                            <li style="margin-bottom: 15px;">
+                                                El cliente debe verificar los puntos 4 y 5 de la aceptación de
+                                                presupuesto.
+                                            </li>
+                                            <li style="margin-bottom: 15px;">
+                                                Si se sospecha de una incidencia en tallas y medidas, el cliente
+                                                deberá
+                                                tomará las medidas
+                                                como se indica en la tabla de medidas, teniendo en cuenta que la
+                                                prenda
+                                                debe estar bien
+                                                estirada y sin arrugas. Para enviar fotos a su comercial y aclarar
+                                                cualquier situacion.
+                                            </li>
+                                            <li style="margin-bottom: 15px;">
+                                                El comercial podrá solicitarle el envío del producto a las
+                                                instalaciones
+                                                de GAÑAFOTE SLU,
+                                                para su verificación en caso de existir una incidencia.
+                                            </li>
+                                            <li style="margin-bottom: 15px;">
+                                                En caso de existir una incidencia el comercial deberá empezar el
+                                                proceso
+                                                de dicha
+                                                incidencia. El cliente deberá proceder al envió de los productos
+                                                defectuosos, para que
+                                                GAÑAFOTE SLU, haga llegar esos productos a fábrica y se inicié la
+                                                nueva
+                                                producción o
+                                                solución de los problemas ocasionados.
+                                            </li>
+                                            <li style="margin-bottom: 15px;">
+                                                Las incidencia se sacarán en el menor tiempo posible, pero siempre
+                                                sujeto al volumen de
+                                                producción de fábrica.
+                                            </li>
+                                        </ol>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </t>
+                </table>
+            </div>
+
+            <t t-if="doc.company_id.id == 1">
+                <div
+                    style="border: 2px solid #C3C7C9; border-radius:20px;display:inline-flex;text-align:center; padding:10px 20px; margin-top: 30px;"
+                >
+                    Términos y condiciones: https://ganafote16.xtendoo.es/terms
+                </div>
+            </t>
+            <t t-if="doc.company_id.id != 1">
+                <div
+                    style="border: 2px solid #222036; border-radius:20px;display:inline-flex;text-align:center; padding:10px 20px; margin-top: 30px;"
+                >
+                    Términos y condiciones: https://ganafote16.xtendoo.es/terms
+                </div>
+            </t>
+
+            <div style="font-size:14px; margin-top:20px; page-break-inside: avoid;">
+                <span
+                    style="font-weight:bolder;"
+                >Información sobre protección de datos:</span>
+                Como responsable del tratamiento le informamos que
+                recabamos sus datos con la finalidad de elaborar su presupuesto. La base legal es el
+                consentimiento por usted prestado para el tratamiento de sus datos. Conservaremos sus datos por un
+                plazo de 2 a 6 meses. Los datos no se cederán a terceros salvo en los casos en que exista una
+                obligación legal. Puede ejercer sus derechos de acceso, rectificación, supresión y portabilidad de sus
+                datos, y la limitación u oposición a su tratamiento a través de nuestro correo electrónico o domicilio
+                fiscal. De igual modo, podría interponer una reclamación ante la Autoridad de Control en
+                www.aepd.es.
+            </div>
+
+        </xpath>
+        <xpath
+            expr="//p[@t-if='not is_html_empty(doc.payment_term_id.note)']"
+            position="attributes"
+        >
+            <attribute name="style">display:none</attribute>
+        </xpath>
+    </template>
+</odoo>

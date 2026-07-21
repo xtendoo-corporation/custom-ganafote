@@ -1,0 +1,5 @@
+# prod.yaml no monta custom/src por volumen (solo devel.yaml lo hace), así
+# que la imagen necesita el código horneado. Se excluye solo el .git interno
+# de cada repo clonado (metadata pesada e innecesaria en runtime).
+custom/src/*/.git
+auto

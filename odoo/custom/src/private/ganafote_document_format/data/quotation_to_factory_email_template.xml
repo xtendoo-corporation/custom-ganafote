@@ -1,0 +1,87 @@
+<?xml version="1.0" ?>
+<odoo>
+     <!-- Mail template are declared in a NOUPDATE block
+         so users can freely customize/delete them -->
+        <!--Email template -->
+        <record id="email_template_quotation_to_factory" model="mail.template">
+            <field name="name">Pedido a fábrica</field>
+            <field name="model_id" ref="sale.model_sale_order" />
+            <field
+            name="email_from"
+        >{{ (object.user_id.email_formatted or user.email_formatted) }}</field>
+            <field name="partner_to">{{ object.partner_id.id }}</field>
+            <field
+            name="subject"
+        >{{ object.company_id.name }}  (Ref {{ object.name or 'n/a' }}) Pedido Confirmado</field>
+            <field name="body_html" type="html">
+                 <div id="header">
+                    <div id="header_fig" style="width:100%;">
+                        <a href="https://erp.ganafote.com">
+                            <img
+                            class="img-fluid o_we_custom_image"
+                            src="https://i.postimg.cc/sDb9Wgxg/cabecera.png"
+                            width="1096"
+                            height="453"
+                            style="border-style:none;box-sizing:border-box;display:inline-block;height:auto;max-width:100%;vertical-align:middle;"
+                        />
+                        </a>
+                    </div>
+                </div>
+                <div
+                id="content"
+                style="clear:both;width:80%;margin:10px auto;font-size:1.5em;color:black;"
+            >
+                    <p>Buenas</p>
+                    <p>
+                        Adjunto pedido
+                        <span style="color:#83c200"><t
+                            t-out="object.name"
+                            data-oe-t-inline="true"
+                            contenteditable="false"
+                        /></span>
+                         (nuevo/reposición) para
+                        <span style="color:#83c200"><t
+                            t-out="object.partner_id.name"
+                            data-oe-t-inline="true"
+                            contenteditable="false"
+                        /></span>.
+                    </p>
+                    <p>
+                        <t
+                        t-if="object.note"
+                        data-oe-t-group="2"
+                        data-oe-t-group-active="true"
+                        data-oe-t-inline="true"
+                    >
+                            <p><b>Nota:</b></p>
+                            <t
+                            t-out="object.note"
+                            data-oe-t-inline="true"
+                            contenteditable="false"
+                        />
+                        </t>
+                        <t t-else="">
+                        </t>
+                    </p>
+                    <p>Un abrazo,</p>
+                </div>
+                <div id="footer">
+                    <a href="https://ganafote.com">
+                        <img
+                        class="img-fluid o_we_custom_image"
+                        src="https://i.postimg.cc/wjfyC6Rd/banner-abajo.png"
+                        alt=""
+                    />
+                    </a>
+
+                </div>
+            </field>
+            <field
+            name="report_template_ids"
+            eval="[(6, 0, [ref('sale.action_report_saleorder')])]"
+        />
+            <field name="lang">${object.partner_id.lang}</field>
+            <field name="use_default_to" eval="False" />
+            <field name="auto_delete" eval="True" />
+        </record>
+</odoo>

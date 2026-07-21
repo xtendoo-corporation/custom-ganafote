@@ -1,0 +1,28 @@
+<odoo>
+<!--    Email y movil requeridos-->
+    <record id="res_partner_email_required" model="ir.ui.view">
+        <field name="name">res.partner.email.required</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='email']" position="attributes">
+                <attribute name="required">1</attribute>
+            </xpath>
+        </field>
+    </record>
+
+ <!--    <record id="res_partner_mobile_required" model="ir.ui.view">
+        <field name="name">res.partner.mobile.required</field>
+        <field name="model">res.partner</field>
+        <field
+      name="inherit_id"
+      ref="pragmatic_odoo_whatsapp_integration.partner_form_whatsapp_form_view"
+    />
+        <field name="arch" type="xml">
+             <xpath expr="//field[@name='mobile']" position="attributes">
+                <attribute name="required">1</attribute>
+            </xpath>
+        </field>
+    </record> -->
+<!--    FIN Email y movil requeridos-->
+</odoo>

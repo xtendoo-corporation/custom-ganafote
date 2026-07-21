@@ -1,0 +1,89 @@
+<?xml version="1.0" ?>
+<odoo>
+    <!-- Mail template are declared in a NOUPDATE block
+        so users can freely customize/delete them -->
+        <!--Email template -->
+        <record id="invoice_confirmation_email_template" model="mail.template">
+            <field name="name">Pedido Entregado</field>
+            <field name="model_id" ref="sale.model_account_move" />
+            <field
+            name="email_from"
+        >{{ (object.user_id.email_formatted or user.email_formatted) }}
+            </field>
+            <field name="partner_to">{{ object.partner_id.id }}</field>
+            <field
+            name="subject"
+        >{{ object.company_id.name }} Pedido Entregado (Ref {{ object.name or 'n/a' }})
+            </field>
+            <field name="body_html" type="html">
+                <div id="header">
+                    <div id="header_fig" style="width:100%;">
+                        <a href="https://erp.ganafote.com">
+                            <img
+                            class="img-fluid o_we_custom_image"
+                            src="https://i.postimg.cc/sDb9Wgxg/cabecera.png"
+                            width="1096"
+                            height="453"
+                            style="border-style:none;box-sizing:border-box;display:inline-block;height:auto;max-width:100%;vertical-align:middle;"
+                        />
+                        </a>
+                    </div>
+                </div>
+                <div
+                id="content"
+                style="clear:both;width:80%;margin:10px auto;font-size:1.5em;color:black;"
+            >
+                    <p>Hola
+                        <span style="color:#83c200">
+                            <t
+                            t-out="object.partner_id.name"
+                            data-oe-t-inline="true"
+                            contenteditable="false"
+                        />
+                        </span>
+                    </p>
+                    <p>
+                        Nos alegra saber que su pedido en GAÑAFOTE SLU ya está en sus manos.
+                    </p>
+                    <p>
+                        Ahora que ya tiene sus productos nos gustaría saber cómo ha sido su experiencia de compra. Si lo
+                        cree conveniente y de forma positiva, puee dejarnos una reseña en el siguiente enlace.
+                    </p>
+                    <p>
+                        Muchas gracias por su confianza. Le esperamos pronto.
+                    </p>
+                    <p style="text-align:center:width:100%;display:block;">
+                        <span
+                        style="font-weight:bolder;background-color:#83c200;width:40%;display:block;margin-left:30%;"
+                    >CUENTENOS SU EXPERIENCIA
+                        </span>
+                    </p>
+                     <a href="https://g.page/r/CTgaiw1V3FEBEAI/review">
+                        <img
+                        class="img-fluid o_we_custom_image"
+                        src="https://i.postimg.cc/PfSCRK5c/ganafotes-removebg-preview.png"
+                        width="1096"
+                        height="453"
+                        style="border-style:none;box-sizing:border-box;display:inline-block;height:auto;max-width:100%;vertical-align:middle;"
+                    />
+                     </a>
+                </div>
+                <div id="footer">
+                    <a href="https://ganafote.com">
+                        <img
+                        class="img-fluid o_we_custom_image"
+                        src="https://i.postimg.cc/wjfyC6Rd/banner-abajo.png"
+                        alt=""
+                    />
+                    </a>
+                </div>
+            </field>
+            <field
+            name="report_template_ids"
+            eval="[(6, 0, [ref('account.account_invoices')])]"
+        />
+            <field name="lang">${object.partner_id.lang}</field>
+            <field name="use_default_to" eval="False" />
+            <field name="auto_delete" eval="True" />
+        </record>
+</odoo>

@@ -1,0 +1,7 @@
+git+https://github.com/OCA/openupgradelib.git@master
+unicodecsv
+unidecode
+pycountry
+cachetools
+schwifty==2024.4.0
+packaging

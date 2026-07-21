@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template
+        id="res_config_settings_view_form"
+        inherit_id="sale_management.res_config_settings_view_form"
+    >
+            <xpath expr="//setting[@id='standardized_offers_setting']" position="after">
+                <setting
+                id="company_so_factory_template_setting"
+                string="Factory Default Template"
+            >
+                    <field name="company_so_factory_template_id" />
+                </setting>
+            </xpath>
+         </template>
+    <template
+        id="res_config_settings_view_form_account_move"
+        inherit_id="account.res_config_settings_view_form"
+    >
+        <xpath expr="//setting[@id='send_invoices_followups']" position="after">
+            <setting
+                id="confirmation_email_setting"
+                string="Plantilla de Correo para Entregas"
+            >
+                <field
+                    name="send_invoice_mail_template_id"
+                    class="oe_inline"
+                    options="{'no_create': True}"
+                />
+            </setting>
+        </xpath>
+    </template>
+
+</odoo>

@@ -1,0 +1,14 @@
+<odoo>
+<!--    mostrar margen-->
+    <record id="show_sale_margin_in_tree_view" model="ir.ui.view">
+        <field name="name">show.sale.margin.in.list.view</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_quotation_tree_with_onboarding" />
+        <field name="arch" type="xml">
+             <field name="amount_total" position="after">
+                <field name="margin" optional="hide" />
+            </field>
+        </field>
+    </record>
+<!--    mostrar margen-->
+</odoo>

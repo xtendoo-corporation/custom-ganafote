@@ -1,0 +1,243 @@
+<?xml version="1.0" ?>
+<odoo>
+    <!-- Mail template are declared in a NOUPDATE block
+        so users can freely customize/delete them -->
+        <!--Email template -->
+        <record id="invoice_email_template" model="mail.template">
+            <field name="name">Ganafote Factura ropa</field>
+            <field name="model_id" ref="account.model_account_move" />
+            <field
+            name="email_from"
+        >{{ (object.user_id.email_formatted or user.email_formatted) }}</field>
+            <field name="partner_to">{{ object.partner_id.id }}</field>
+            <field
+            name="subject"
+        >{{ object.company_id.name }} Factura (Ref {{ object.name or 'n/a' }})</field>
+            <field name="body_html" type="html">
+                <div id="header" style="margin-bottom: 150px">
+                    <div style="display: flex; justify-content: space-between;">
+                        <div id="header_fig" style="width: 50%;">
+                            <a href="https://ganafote.com">
+                                <img
+                                src="https://ganafote16.xtendoo.es/ganafote_document_format/static/src/img/logoymanchasuperior2.png"
+                                width="120"
+                                style="border-style: none; box-sizing: border-box; display: inline-block; height: auto; width: 300px; max-width: 100%; vertical-align: middle;"
+                            />
+                            </a>
+                        </div>
+                        <div id="header_fig" style="width: 50%;">
+                            <p
+                            style="text-align: right; margin-right: 20px; font-size: 24px; color: black;"
+                        >
+                                Factura Nº
+                                <t
+                                t-out="object.name"
+                                data-oe-t-inline="true"
+                                contenteditable="false"
+                            />
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div
+                id="content"
+                style="clear:both;width:80%;margin:10px auto;font-size:1.5em;color:black;"
+            >
+                    <h1>
+                        <p style="font-size: 40px">¡HOLA!
+                            <span style="color:#83c200; text-transform: uppercase;">
+                                <t
+                                t-out="object.partner_id.name"
+                                data-oe-t-inline="true"
+                                contenteditable="false"
+                            />
+                                ,
+                            </span>
+                        </p>
+                    </h1>
+                    <p>
+                        Desde el departamento de contabilidad de GAÑAFOTE SLU le hacemos llegar la
+                        <span style="color:#83c200">
+                            FACTURA
+                            <span>
+                                <t
+                                t-out="object.name"
+                                data-oe-t-inline="true"
+                                contenteditable="false"
+                            />
+                            </span>
+                        </span>
+                        correspondiente al total de su pedido
+                        <span style="color:#83c200">
+                            PEDIDO
+                            <span>
+                                <t
+                                t-out="object.invoice_origin"
+                                data-oe-t-inline="true"
+                                contenteditable="false"
+                            />
+                            </span>
+                        </span>
+                        . Del cual queda pendiente de pago la cantidad de
+                        <span style="color:#83c200">
+                            <span>
+                                <t
+                                t-out="object.amount_residual"
+                                data-oe-t-inline="true"
+                                contenteditable="false"
+                            />
+                                €
+                            </span>
+
+                        </span>
+                    </p>
+                    <p>
+                        Gracias por su atención.
+                    </p>
+                    <!--                    <div style="text-align: center; margin-top:50px;">-->
+                    <!--                        <button-->
+                    <!--                            style="background-color: black; color: #83c200; padding: 10px 20px; width: 400px; font-size: 16px; border: none; cursor: pointer;">-->
+                    <!--                            DESCARGA LA FACTURA-->
+                    <!--                        </button>-->
+                    <!--                    </div>-->
+
+                </div>
+                <div id="footer" style="text-align: center;">
+                    <a href="https://ganafote.com">
+                        <img
+                        class="img-fluid o_we_custom_image"
+                        src="https://ganafote16.xtendoo.es/ganafote_document_format/static/src/img/footer.png"
+                        alt=""
+                        style="max-width: 100%; height: auto"
+                    />
+                    </a>
+                </div>
+            </field>
+            <field
+            name="report_template_ids"
+            eval="[(6, 0, [ref('account.account_invoices')])]"
+        />
+            <field name="lang">${object.partner_id.lang}</field>
+            <field name="use_default_to" eval="False" />
+            <field name="auto_delete" eval="True" />
+        </record>
+
+        <record id="invoice_email_template_events" model="mail.template">
+            <field name="name">Ganafote Factura eventos</field>
+            <field name="model_id" ref="account.model_account_move" />
+            <field
+            name="email_from"
+        >{{ (object.user_id.email_formatted or user.email_formatted) }}</field>
+            <field name="partner_to">{{ object.partner_id.id }}</field>
+            <field
+            name="subject"
+        >{{ object.company_id.name }} Factura (Ref {{ object.name or 'n/a' }})</field>
+            <field name="body_html" type="html">
+                <div id="header" style="margin-bottom: 150px">
+                    <div style="display: flex; justify-content: space-between;">
+                        <div id="header_fig" style="width: 50%;">
+                            <a href="https://ganafote.com">
+                                <img
+                                src="https://ganafote16.xtendoo.es/ganafote_document_format/static/src/img/logo-y-mancha-superior-events.png"
+                                width="120"
+                                style="border-style: none; box-sizing: border-box; display: inline-block; height: auto; width: 300px; max-width: 100%; vertical-align: middle;"
+                            />
+                            </a>
+                        </div>
+                        <div id="header_fig" style="width: 50%;">
+                            <p
+                            style="text-align: right; margin-right: 20px; font-size: 24px; color: black;"
+                        >
+                                Factura Nº
+                                <t
+                                t-out="object.name"
+                                data-oe-t-inline="true"
+                                contenteditable="false"
+                            />
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div
+                id="content"
+                style="clear:both;width:80%;margin:10px auto;font-size:1.5em;color:black;"
+            >
+                    <h1>
+                        <p style="font-size: 40px">¡HOLA!
+                            <span style="color:#336eb4; text-transform: uppercase;">
+                                <t
+                                t-out="object.partner_id.name"
+                                data-oe-t-inline="true"
+                                contenteditable="false"
+                            />
+                                ,
+                            </span>
+                        </p>
+                    </h1>
+                    <p>
+                        Desde el departamento de contabilidad de GAÑAFOTE SLU le hacemos llegar la
+                        <span style="color:#336eb4">
+                            FACTURA
+                            <span>
+                                <t
+                                t-out="object.name"
+                                data-oe-t-inline="true"
+                                contenteditable="false"
+                            />
+                            </span>
+                        </span>
+                        correspondiente al total de su pedido
+                        <span style="color:#336eb4">
+                            PEDIDO
+                            <span>
+                                <t
+                                t-out="object.invoice_origin"
+                                data-oe-t-inline="true"
+                                contenteditable="false"
+                            />
+                            </span>
+                        </span>
+                        . Del cual queda pendiente de pago la cantidad de
+                        <span style="color:#336eb4">
+                            <span>
+                                <t
+                                t-out="object.amount_residual"
+                                data-oe-t-inline="true"
+                                contenteditable="false"
+                            />
+                                €
+                            </span>
+
+                        </span>
+                    </p>
+                    <p>
+                        Gracias por su atención.
+                    </p>
+
+                </div>
+                <div id="footer" style="text-align: center;">
+                    <a href="https://ganafote.com">
+                        <img
+                        class="img-fluid o_we_custom_image"
+                        src="https://ganafote16.xtendoo.es/ganafote_document_format/static/src/img/ganafote-footer-events.png"
+                        alt=""
+                        style="max-width: 100%; height: auto"
+                    />
+                    </a>
+                </div>
+            </field>
+            <field
+            name="report_template_ids"
+            eval="[(6, 0, [ref('account.account_invoices')])]"
+        />
+            <field name="lang">${object.partner_id.lang}</field>
+            <field name="use_default_to" eval="False" />
+            <field name="auto_delete" eval="True" />
+        </record>
+
+
+</odoo>

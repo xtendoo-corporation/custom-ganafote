@@ -1,0 +1,145 @@
+<?xml version="1.0" ?>
+<odoo>
+     <!-- Mail template are declared in a NOUPDATE block
+         so users can freely customize/delete them -->
+        <!--Email template -->
+        <record id="email_template_quotation_confirm" model="mail.template">
+            <field name="name">Pedido Confirmado</field>
+            <field name="model_id" ref="sale.model_sale_order" />
+            <field
+            name="email_from"
+        >{{ (object.user_id.email_formatted or user.email_formatted) }}</field>
+            <field name="partner_to">{{ object.partner_id.id }}</field>
+            <field
+            name="subject"
+        >{{ object.company_id.name }}  (Ref {{ object.name or 'n/a' }}) Pedido Confirmado</field>
+            <field name="body_html" type="html">
+                 <div id="header">
+                    <div id="header_fig" style="width:100%;">
+                        <a href="https://erp.ganafote.com">
+                            <img
+                            class="img-fluid o_we_custom_image"
+                            src="https://i.postimg.cc/sDb9Wgxg/cabecera.png"
+                            width="1096"
+                            height="453"
+                            style="border-style:none;box-sizing:border-box;display:inline-block;height:auto;max-width:100%;vertical-align:middle;"
+                        />
+                        </a>
+                    </div>
+                </div>
+                <div
+                id="content"
+                style="clear:both;width:80%;margin:10px auto;font-size:1.5em;color:black;"
+            >
+                    <p>Hola  <span style="color:#83c200"><t
+                            t-out="object.partner_id.name"
+                            data-oe-t-inline="true"
+                            contenteditable="false"
+                        /></span></p>
+                    <p>
+                        Su pedido ha sido tramitado con éxito a nuestra fábrica. Le mandaremos otro e-mail cuando el pedido salga de nuestras instalaciones. Recuerde que antes de la producción final, nuestro departamento de diseño le mandará una imagen de la muestra que deberá ser aceptada para poder continuar con la producción en caso de que el pedido sea nuevo. El pedido una vez tramitado no podrá ser modificado. La fecha estimada de entrega se indica a continuación.
+                    </p>
+                    <table
+                    style="width:100%;border-collapse: separate; border-spacing: 10px 10px;"
+                >
+                        <tr>
+                            <td
+                            style="font-size:0.8em;background-color:black;min-height:45px;max-height:45px;"
+                        >
+                                <p
+                                style="margin-top:9px;display:block;width:100%;text-align:center;color:white"
+                            >ENTREGA ESTIMADA</p>
+                            </td>
+                            <td
+                            style="font-size:0.8em;background-color:#96C11E;min-height:45px;max-height:45px;max-height:45px;"
+                        >
+                                           <p
+                                style="margin-top:9px;display:block;width:100%;text-align:center;color:white;"
+                            >
+                            <span>
+                               <t
+                                        t-if="object.commitment_date"
+                                        data-oe-t-group="2"
+                                        data-oe-t-group-active="true"
+                                        data-oe-t-inline="true"
+                                    >
+                                    <t
+                                            t-out="object.commitment_date.strftime('%d/%m/%Y')"
+                                            data-oe-t-inline="true"
+                                            contenteditable="false"
+                                        />
+                               </t>
+                                <t t-else="">
+                                    <t
+                                            t-out="object.expected_date.strftime('%d/%m/%Y')"
+                                            data-oe-t-inline="true"
+                                            contenteditable="false"
+                                        />
+                                </t>
+                            </span>
+                        </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td
+                            style="font-size:0.8em;background-color:black;min-height:45px;max-height:45px;"
+                        >
+                                <p
+                                style="margin-top:9px;display:block;width:100%;text-align:center;color:white"
+                            >DIRECCIÓN DE ENVÍO</p>
+                            </td>
+                            <td
+                            style="font-size:0.8em;background-color:#96C11E; min-height:45px;max-height:45px;"
+                        >
+                                <p
+                                style="margin-top:9px;display:block;width:100%;text-align:center;color:white;"
+                            ><span><t
+                                        t-out="object.partner_shipping_id.street"
+                                        data-oe-t-inline="true"
+                                        contenteditable="false"
+                                    /></span></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td
+                            style="font-size:0.8em;background-color:black;clear:both;min-height:45px;max-height:45px;"
+                        >
+                                <p
+                                style="margin-top:9px;display:block;width:100%;text-align:center;color:white"
+                            >IMPORTE TOTAL</p>
+                            </td>
+                            <td
+                            style="font-size:0.8em;background-color:#96C11E;min-height:45px;max-height:45px;"
+                        >
+                                <p
+                                style="margin-top:9px;display:block;width:100%;text-align:center;color:white"
+                            ><span><t
+                                        t-out="object.amount_total"
+                                        data-oe-t-inline="true"
+                                        contenteditable="false"
+                                    /> €</span></p>
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+                <div id="footer">
+                    <a href="https://ganafote.com">
+                        <img
+                        class="img-fluid o_we_custom_image"
+                        src="https://i.postimg.cc/wjfyC6Rd/banner-abajo.png"
+                        alt=""
+                    />
+                    </a>
+
+                </div>
+            </field>
+            <field
+            name="report_template_ids"
+            eval="[(6, 0, [ref('sale.action_report_saleorder')])]"
+        />
+            <field name="lang">${object.partner_id.lang}</field>
+            <field name="use_default_to" eval="False" />
+            <field name="auto_delete" eval="True" />
+        </record>
+</odoo>
