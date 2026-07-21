@@ -38,6 +38,56 @@ services:
     ports:
       - "127.0.0.1:5432:5432"
 
+  # Proxies de whitelist específicos de este cliente (AEAT/Verifactu, por los
+  # módulos l10n_es_aeat_*). Van aquí (no en el odoo_services compartido del
+  # servidor) para que el proyecto sea autocontenido y portable: si se
+  # traslada a otro servidor, estos proxies se despliegan solos con él.
+  # Los proxies genéricos (fonts.googleapis.com, stripe, geonames...) siguen
+  # en el odoo_services compartido, vía la red services_default.
+  proxy_verifactu_prewww1:
+    restart: unless-stopped
+    image: ghcr.io/tecnativa/docker-whitelist:latest
+    networks:
+      default:
+        aliases:
+          - prewww1.aeat.es
+    environment:
+      TARGET: prewww1.aeat.es
+      PRE_RESOLVE: 1
+
+  proxy_verifactu_prewww2:
+    restart: unless-stopped
+    image: ghcr.io/tecnativa/docker-whitelist:latest
+    networks:
+      default:
+        aliases:
+          - prewww2.aeat.es
+    environment:
+      TARGET: prewww2.aeat.es
+      PRE_RESOLVE: 1
+
+  proxy_verifactu_agencia:
+    restart: unless-stopped
+    image: ghcr.io/tecnativa/docker-whitelist:latest
+    networks:
+      default:
+        aliases:
+          - www2.agenciatributaria.gob.es
+    environment:
+      TARGET: www2.agenciatributaria.gob.es
+      PRE_RESOLVE: 1
+
+  proxy_verifactu_w3:
+    restart: unless-stopped
+    image: ghcr.io/tecnativa/docker-whitelist:latest
+    networks:
+      default:
+        aliases:
+          - www.w3.org
+    environment:
+      TARGET: www.w3.org
+      PRE_RESOLVE: 1
+
 networks:
   default:
     driver_opts:
