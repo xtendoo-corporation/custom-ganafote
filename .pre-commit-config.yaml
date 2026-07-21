@@ -97,7 +97,7 @@ repos:
         args:
           - --addons-dir=odoo/custom/src/private
           - --org-name=Xtendoo
-          - --repo-name=myproject-odoo
+          - --repo-name=ganafote
           - --convert-fragments-to-markdown
           - --gen-html
           - --if-fragments-changed

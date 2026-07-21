@@ -28,7 +28,7 @@ postgres_username: odoo
 postgres_version: "17"
 project_author: Xtendoo
 project_license: BSL-1.0
-project_name: myproject-odoo
+project_name: ganafote
 smtp_default_from: ""
 smtp_relay_host: ""
 use_refurb: false
