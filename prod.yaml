@@ -18,6 +18,7 @@ services:
       - db
     networks:
       default:
+      services_default:
     labels:
       doodba.domain.main: ""
 
@@ -41,6 +42,8 @@ networks:
   default:
     driver_opts:
       encrypted: 1
+  services_default:
+    external: true
 
 volumes:
   filestore:
