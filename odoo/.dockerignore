@@ -1,5 +1,8 @@
 # prod.yaml no monta custom/src por volumen (solo devel.yaml lo hace), así
-# que la imagen necesita el código horneado. Se excluye solo el .git interno
-# de cada repo clonado (metadata pesada e innecesaria en runtime).
-custom/src/*/.git
+# que la imagen necesita el código horneado. NO excluir custom/src/*/.git:
+# el propio build de Doodba (autoaggregate/gitaggregate) a veces necesita
+# verificar/hacer checkout dentro de esos .git durante el build (según el
+# estado de la cache de BuildKit, de forma no determinista) — si el .git no
+# está, el build falla con "fatal: not a git repository" (visto dos veces
+# en Ganafote). El coste extra de espacio en la imagen es aceptable.
 auto
