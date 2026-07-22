@@ -13,9 +13,7 @@
                 <t t-set="colorbackground"
                    t-value="'color:#ffffff; background-color:#222036; display:inline;border-radius: 20px; padding: 7.5px 10px;'" />
             </t>
-            <p></p>
-
-            <h2 class="mt16" t-att-style="colorbackground">
+            <h2 class="mt-2" t-att-style="colorbackground">
                 <t t-if="not (env.context.get('proforma', False) or is_pro_forma)">
                     <span
                         t-if="doc.state not in ['draft','sent']"
@@ -145,7 +143,7 @@
                     <t t-if="doc.company_id.id == 1">
                         <tr>
                             <td>
-                                <div style="width:100%;margin-top:10px;">
+                                <div style="width:100%;margin-top:2px;">
                                     <div>
                                         <p style="font-weight:bolder">OBSERVACIONES</p>
                                     </div>
