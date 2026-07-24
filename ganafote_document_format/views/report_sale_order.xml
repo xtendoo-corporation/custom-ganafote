@@ -5,14 +5,10 @@
     >
         <xpath expr="//t[@t-set='information_block']" position="replace"/>
         <xpath expr="//h2[@class='mt-4']" position="replace">
-            <t t-if="doc.company_id.id == 1">
-                <t t-set="colorbackground"
-                   t-value="'color:#ffffff; background-color:#C3C7C9; display:inline;border-radius: 20px; padding: 7.5px 10px;'" />
-            </t>
-            <t t-if="doc.company_id.id != 1">
-                <t t-set="colorbackground"
-                   t-value="'color:#ffffff; background-color:#222036; display:inline;border-radius: 20px; padding: 7.5px 10px;'" />
-            </t>
+            <t t-set="company_color"
+               t-value="{1: '#C3C7C9', 2: '#222036', 3: '#aeef9a', 4: '#bf954b'}.get(doc.company_id.id, '#222036')" />
+            <t t-set="colorbackground"
+               t-value="'color:#ffffff; background-color:%s; display:inline;border-radius: 20px; padding: 7.5px 10px;' % company_color" />
             <h2 class="mt-2" t-att-style="colorbackground">
                 <t t-if="not (env.context.get('proforma', False) or is_pro_forma)">
                     <span
@@ -290,18 +286,12 @@
                 </table>
             </div>
 
-            <t t-if="doc.company_id.id == 1">
-                <div
-                    style="border: 2px solid #C3C7C9; border-radius:20px;display:inline-flex;text-align:center; padding:10px 20px; margin-top: 30px;">
-                    Términos y condiciones: https://ganafote16.xtendoo.es/terms
-                </div>
-            </t>
-            <t t-if="doc.company_id.id != 1">
-                <div
-                    style="border: 2px solid #222036; border-radius:20px;display:inline-flex;text-align:center; padding:10px 20px; margin-top: 30px;">
-                    Términos y condiciones: https://ganafote16.xtendoo.es/terms
-                </div>
-            </t>
+            <t t-set="company_border_color"
+               t-value="{1: '#C3C7C9', 2: '#222036', 3: '#aeef9a', 4: '#bf954b'}.get(doc.company_id.id, '#222036')" />
+            <div
+                t-attf-style="border: 2px solid {{ company_border_color }}; border-radius:20px;display:inline-flex;text-align:center; padding:10px 20px; margin-top: 30px;">
+                Términos y condiciones: https://ganafote16.xtendoo.es/terms
+            </div>
 
             <div style="font-size:14px; margin-top:20px; page-break-inside: avoid;">
                 <span style="font-weight:bolder;">Información sobre protección de datos:</span>

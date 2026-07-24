@@ -6,14 +6,10 @@
         <field name="arch" type="xml">
             <xpath expr="//div[@class='page']/h2" position="replace">
 
-                <t t-if="o.company_id.id == 1">
-                    <t t-set="colorbackground"
-                        t-value="'background-color:#C3C7C9; display:inline;border-radius: 20px; padding: 5px 10px;'" />
-                </t>
-                <t t-if="o.company_id.id != 1">
-                    <t t-set="colorbackground"
-                        t-value="'background-color:#222036; display:inline;border-radius: 20px; padding: 5px 10px;'" />
-                </t>
+                <t t-set="company_color"
+                    t-value="{1: '#C3C7C9', 2: '#222036', 3: '#aeef9a', 4: '#bf954b'}.get(o.company_id.id, '#222036')" />
+                <t t-set="colorbackground"
+                    t-value="'background-color:%s; display:inline;border-radius: 20px; padding: 5px 10px;' % company_color" />
 
                 <h2 style="color:#ffffff;">
                     <div t-att-style="colorbackground">
