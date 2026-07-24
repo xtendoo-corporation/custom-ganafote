@@ -211,7 +211,7 @@
                             style="border: 2px solid #C3C7C9; border-radius:20px; display:inline-block;text-align:center; padding:10px 20px; margin-top:5px; font-size: 12px; white-space: normal; max-width: 100%;"
                         >
                             <span style="display: inline-block; white-space: nowrap;">
-                                CUENTA&#160;GAÑAFOTE&#160;SLU&#160;=&#160;IBAN&#160;ES74&#160;0049&#160;0012&#160;7123&#160;1219&#160;3764</span>
+                                CUENTA&#160;GAÑAFOTE&#160;SLU&#160;=&#160;IBAN&#160;ES65&#160;3187&#160;0022&#160;6266&#160;8329&#160;0925</span>
                         </p>
                     </t>
                     <t t-if="o.company_id.id == 2">
@@ -219,7 +219,7 @@
                             style="border:2px solid #222036;border-radius:20px; display:inline-block;text-align:center; padding:10px 20px; margin-top:5px; font-size: 12px; white-space: normal; max-width: 100%;"
                         >
                             <span style="display: inline-block; white-space: nowrap;">
-                                CUENTA&#160;GAÑAFOTE&#160;SPORTS&#160;EVENTS&#160;=&#160;IBAN&#160;ES34&#160;0049&#160;0012&#160;7321&#160;1219&#160;3772</span>
+                                CUENTA&#160;GAÑAFOTE&#160;SPORTS&#160;EVENTS&#160;=&#160;IBAN&#160;ES61&#160;3187&#160;0022&#160;6966&#160;8329&#160;1527</span>
                         </p>
                     </t>
                 </div>
