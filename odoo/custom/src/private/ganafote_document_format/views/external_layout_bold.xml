@@ -13,13 +13,13 @@
                         t-if="company.logo"
                         src="/ganafote_document_format/static/src/img/Logo-superior-layout-bold.png"
                         alt="Logo"
-                        style="max-height:150px; max-width:300px; margin-bottom:20px;"
+                        style="max-height:150px; max-width:300px; margin-bottom:8px;"
                     />
                     </div>
                     <div
                     class="col-5 offset-1"
                     name="company_address"
-                    style="line-height: 1.5; margin-top: 20px;"
+                    style="line-height: 1.5; margin-top: 8px;"
                 >
                         <span
                         t-if="company.company_details"

@@ -14,3 +14,11 @@ server-tools: ["*"]
 server-ux: ["*"]
 social: ["*"]
 web: ["*"]
+
+# Repos propios de Xtendoo (no OCA) - mismo patrón que ganafote_16
+ENV:
+  DEFAULT_REPO_PATTERN: https://github.com/xtendoo-corporation/{}.git
+  ODOO_VERSION: 19.0
+custom-ganafote: ["*"]
+xtendoo: ["*"]
+xtendoo-pos-conventional: ["*"]
