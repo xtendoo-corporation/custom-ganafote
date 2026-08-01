@@ -228,9 +228,9 @@
             <xpath expr="//div[@id='total']" position="replace">
                 <div id="total" class="row">
                     <div
-                        t-attf-class="#{'col-6' if report_type != 'html' else 'col-sm-7 col-md-6'} ms-auto">
+                        t-attf-class="#{'col-12' if report_type != 'html' else 'col-sm-8 col-md-7'} ms-auto">
                         <table class="table table-sm table-borderless"
-                            style="page-break-inside: avoid; margin: 0px; padding: 0px;">
+                            style="page-break-inside: avoid; margin: 0px; padding: 0px; width: 100%; table-layout: fixed;">
 
                             <!--Tax
                             totals-->
@@ -282,11 +282,11 @@
         <field name="arch" type="xml">
             <xpath expr="//tr[@class='border-black o_subtotal']" position="replace">
                 <tr class="border-black o_subtotal">
-                    <td style="margin: 0px; padding: 0px; font-size:20px;">
+                    <td style="margin: 0px; padding: 0px; font-size:20px; white-space: normal; word-break: break-word;">
                         <strong t-esc="subtotal['name']" />
                     </td>
 
-                    <td class="text-end" style="margin: 0px; padding: 0px; font-size:20px;">
+                    <td class="text-end" style="margin: 0px; padding: 0px; font-size:20px; white-space: nowrap;">
                         <strong>
                             <span
                                 t-att-class="oe_subtotal_footer_separator"
@@ -297,10 +297,10 @@
                 </tr>
             </xpath>
             <xpath expr="//tr[@class='border-black o_total']" position="replace">
-                <td style="margin: 0px; padding: 0px; font-size:20px;">
+                <td style="margin: 0px; padding: 0px; font-size:20px; white-space: normal; word-break: break-word;">
                     <strong>Total</strong>
                 </td>
-                <td class="text-end" style="margin: 0px; padding: 0px; font-size:20px;">
+                <td class="text-end" style="margin: 0px; padding: 0px; font-size:20px; white-space: nowrap;">
                     <strong>
                         <span t-esc="tax_totals['formatted_amount_total_rounded']"
                             t-if="'formatted_amount_total_rounded' in tax_totals" />
@@ -319,7 +319,7 @@
             <xpath expr="//tr" position="replace">
                 <tr>
                     <t t-if="tax_totals['display_tax_base']">
-                        <td style="margin: 0px; padding: 0px;">
+                        <td style="margin: 0px; padding: 0px; white-space: normal; word-break: break-word;">
                             <strong>
                                 <span t-esc="amount_by_group['tax_group_name']" />
                                 <span t-if="not amount_by_group.get('hide_base_amount')"
@@ -328,7 +328,7 @@
                                 </span>
                             </strong>
                         </td>
-                        <td class="text-end o_price_total" style="margin: 0px; padding: 0px;">
+                        <td class="text-end o_price_total" style="margin: 0px; padding: 0px; white-space: nowrap;">
                             <strong>
                                 <span class="text-nowrap"
                                     t-esc="amount_by_group['formatted_tax_group_amount']" />
@@ -336,12 +336,12 @@
                         </td>
                     </t>
                     <t t-else="">
-                        <td style="margin: 0px; padding: 0px;">
+                        <td style="margin: 0px; padding: 0px; white-space: normal; word-break: break-word;">
                             <strong>
-                                <span class="text-nowrap" t-esc="amount_by_group['tax_group_name']" />
+                                <span t-esc="amount_by_group['tax_group_name']" />
                             </strong>
                         </td>
-                        <td class="text-end o_price_total" style="margin: 0px; padding: 0px;">
+                        <td class="text-end o_price_total" style="margin: 0px; padding: 0px; white-space: nowrap;">
                             <strong>
                                 <span class="text-nowrap"
                                     t-esc="amount_by_group['formatted_tax_group_amount']" />
