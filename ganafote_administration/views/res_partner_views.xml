@@ -8,7 +8,7 @@
             <xpath expr="//field[@name='email']" position="attributes">
                 <attribute name="required">1</attribute>
             </xpath>
-             <xpath expr="//field[@name='mobile']" position="attributes">
+             <xpath expr="//field[@name='phone']" position="attributes">
                 <attribute name="required">1</attribute>
             </xpath>
         </field>

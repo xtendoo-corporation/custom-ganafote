@@ -1,69 +1,39 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
-    <template
-        id="res_config_settings_view_form"
-        inherit_id="sale_management.res_config_settings_view_form"
-    >
-            <xpath expr="//div[@id='design_quotation_template_setting']" position="after">
-                <div
-                    class="col-12 col-lg-6 o_setting_box"
+    <record id="res_config_settings_view_form" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.ganafote.sale</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="sale_management.res_config_settings_view_form" />
+        <field name="arch" type="xml">
+            <setting id="standardized_offers_setting" position="after">
+                <setting
                     id="company_so_factory_template_setting"
+                    string="Factory Default Template"
+                    help="Plantilla de presupuesto por defecto para fábrica"
                 >
-                    <div class="o_setting_right_pane">
-                        <label for="company_so_factory_template_id"/>
-                        <field name="company_so_factory_template_id"/>
-                    </div>
-                </div>
-            </xpath>
-         </template>
-    <template
-        id="res_config_settings_view_form_account_move"
-        inherit_id="account.res_config_settings_view_form"
-    >
-        <div id="default_setting_options" position="inside">
-<!--             <h2>Email de entrega</h2>-->
-            <!--                <div-->
-                    <div class="col-12 col-lg-6 o_setting_box"
+                    <field name="company_so_factory_template_id" />
+                </setting>
+            </setting>
+        </field>
+    </record>
+
+    <record id="res_config_settings_view_form_account_move" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.ganafote.account</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="account.res_config_settings_view_form" />
+        <field name="arch" type="xml">
+            <setting id="use_invoice_terms" position="after">
+                <setting
                     id="confirmation_email_setting"
-
+                    string="Email de entrega"
+                    help="Plantilla de correo para notificar entregas"
                 >
-                    <div class="o_setting_right_pane">
-                        <label
-                            for="send_invoice_mail_template_id"
-                            class="o_light_label"
-                        />
-                        <field
-                            name="send_invoice_mail_template_id"
-                            class="oe_inline"
-                            options="{'no_create': True}"
-                        />
-                    </div>
-                    </div>
-
-        </div>
-<!--            <xpath-->
-<!--                expr="//div[hasclass('app_settings_block')][@data-key='account']"-->
-<!--                position="inside"-->
-<!--            >-->
-<!--                <h2>Email de entrega</h2>-->
-<!--                <div-->
-<!--                    class="col-12 col-lg-6 o_setting_box"-->
-<!--                    id="confirmation_email_setting"-->
-<!--                    groups="base.group_no_one"-->
-<!--                >-->
-<!--                    <div class="o_setting_right_pane">-->
-<!--                        <label-->
-<!--                            for="send_invoice_mail_template_id"-->
-<!--                            class="o_light_label"-->
-<!--                        />-->
-<!--                        <field-->
-<!--                            name="send_invoice_mail_template_id"-->
-<!--                            class="oe_inline"-->
-<!--                            options="{'no_create': True}"-->
-<!--                        />-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </xpath>-->
-    </template>
-
+                    <field
+                        name="send_invoice_mail_template_id"
+                        options="{'no_create': True}"
+                    />
+                </setting>
+            </setting>
+        </field>
+    </record>
 </odoo>
