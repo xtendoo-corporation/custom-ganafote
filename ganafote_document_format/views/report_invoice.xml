@@ -274,74 +274,34 @@
         <field name="name">custom.document.tax.totals</field>
         <field name="inherit_id" ref="account.document_tax_totals" />
         <field name="arch" type="xml">
-            <xpath expr="//tr[@class='border-black o_subtotal']" position="replace">
-                <tr class="border-black o_subtotal">
+            <xpath expr="//tr[hasclass('o_subtotal')]" position="replace">
+                <tr t-if="subtotal['tax_groups']" class="o_subtotal">
                     <td style="margin: 0px; padding: 0px; font-size:20px; white-space: nowrap;">
-                        <strong t-esc="subtotal['name']" />
+                        <strong t-out="subtotal['name']" />
                     </td>
 
                     <td class="text-end" style="margin: 0px; padding: 0px; font-size:20px; white-space: nowrap;">
                         <strong>
                             <span
                                 t-att-class="oe_subtotal_footer_separator"
-                                t-esc="subtotal['formatted_amount']"
+                                t-out="subtotal['base_amount_currency']"
+                                t-options="{'widget': 'monetary', 'display_currency': currency}"
                             />
                         </strong>
                     </td>
                 </tr>
             </xpath>
-            <xpath expr="//tr[@class='border-black o_total']" position="replace">
-                <td style="margin: 0px; padding: 0px; font-size:20px; white-space: nowrap;">
-                    <strong>Total</strong>
-                </td>
-                <td class="text-end" style="margin: 0px; padding: 0px; font-size:20px; white-space: nowrap;">
-                    <strong>
-                        <span t-esc="tax_totals['formatted_amount_total_rounded']"
-                            t-if="'formatted_amount_total_rounded' in tax_totals" />
-                        <span t-esc="tax_totals['formatted_amount_total']" t-else="" />
-                    </strong>
-                </td>
-            </xpath>
-        </field>
-    </record>
-
-
-    <record id="custom_tax_groups_totals" model="ir.ui.view">
-        <field name="name">custom.document.tax.totals</field>
-        <field name="inherit_id" ref="account.tax_groups_totals" />
-        <field name="arch" type="xml">
-            <xpath expr="//tr" position="replace">
-                <tr>
-                    <t t-if="tax_totals['display_tax_base']">
-                        <td style="margin: 0px; padding: 0px; white-space: normal; word-break: break-word;">
-                            <strong>
-                                <span t-esc="amount_by_group['tax_group_name']" />
-                                <span t-if="not amount_by_group.get('hide_base_amount')"
-                                    class="text-nowrap">on<t
-                                        t-esc="amount_by_group['formatted_tax_group_base_amount']" />
-                                </span>
-                            </strong>
-                        </td>
-                        <td class="text-end o_price_total" style="margin: 0px; padding: 0px; white-space: nowrap;">
-                            <strong>
-                                <span class="text-nowrap"
-                                    t-esc="amount_by_group['formatted_tax_group_amount']" />
-                            </strong>
-                        </td>
-                    </t>
-                    <t t-else="">
-                        <td style="margin: 0px; padding: 0px; white-space: normal; word-break: break-word;">
-                            <strong>
-                                <span t-esc="amount_by_group['tax_group_name']" />
-                            </strong>
-                        </td>
-                        <td class="text-end o_price_total" style="margin: 0px; padding: 0px; white-space: nowrap;">
-                            <strong>
-                                <span class="text-nowrap"
-                                    t-esc="amount_by_group['formatted_tax_group_amount']" />
-                            </strong>
-                        </td>
-                    </t>
+            <xpath expr="//tr[hasclass('o_total')]" position="replace">
+                <tr class="o_total">
+                    <td style="margin: 0px; padding: 0px; font-size:20px; white-space: nowrap;">
+                        <strong>Total</strong>
+                    </td>
+                    <td class="text-end" style="margin: 0px; padding: 0px; font-size:20px; white-space: nowrap;">
+                        <strong
+                            t-out="tax_totals['total_amount_currency']"
+                            t-options="{'widget': 'monetary', 'display_currency': currency}"
+                        />
+                    </td>
                 </tr>
             </xpath>
         </field>
