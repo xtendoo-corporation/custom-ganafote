@@ -46,6 +46,8 @@
                     </div>
                 </h2>
             </xpath>
+            <xpath expr="//div[@name='origin']" position="replace" />
+            <xpath expr="//div[@name='reference']" position="replace" />
             <xpath expr="//table/thead" position="replace">
                 <thead style="display: table-row-group">
                     <tr>
@@ -61,14 +63,7 @@
                             <span>Desc.%</span>
                         </th>
                         <th name="th_subtotal" style="text-align:right;">
-                            <span
-                                groups="account.group_show_line_subtotals_tax_excluded"
-                            >Total
-                            </span>
-                            <span
-                                groups="account.group_show_line_subtotals_tax_included"
-                            >Total
-                            </span>
+                            <span>Total</span>
                         </th>
                     </tr>
                 </thead>
@@ -140,12 +135,6 @@
                                     <span
                                         class="text-nowrap"
                                         t-field="line.price_subtotal"
-                                        groups="account.group_show_line_subtotals_tax_excluded"
-                                    />
-                                    <span
-                                        class="text-nowrap"
-                                        t-field="line.price_total"
-                                        groups="account.group_show_line_subtotals_tax_included"
                                     />
                                 </td>
                             </t>
@@ -231,6 +220,10 @@
                         t-attf-class="#{'col-12' if report_type != 'html' else 'col-sm-8 col-md-7'} ms-auto">
                         <table class="table table-sm table-borderless"
                             style="page-break-inside: avoid; margin: 0px; padding: 0px; width: 100%; table-layout: fixed;">
+                            <colgroup>
+                                <col style="width: 68%;" />
+                                <col style="width: 32%;" />
+                            </colgroup>
 
                             <!--Tax
                             totals-->
@@ -259,8 +252,7 @@
                                     </t>
                                     <t t-if="len(payments_vals) > 0">
                                         <tr class="border-black">
-                                            <td style="margin: 0px; padding: 0px; font-size:12px;">Importe
-                                                adeudado</td>
+                                            <td style="margin: 0px; padding: 0px; font-size:12px; white-space: nowrap;">Importe adeudado</td>
                                             <td class="text-end"
                                                 style="margin: 0px; padding: 0px; font-size:12px;">
                                                 <span t-field="o.amount_residual" />
@@ -282,7 +274,7 @@
         <field name="arch" type="xml">
             <xpath expr="//tr[@class='border-black o_subtotal']" position="replace">
                 <tr class="border-black o_subtotal">
-                    <td style="margin: 0px; padding: 0px; font-size:20px; white-space: normal; word-break: break-word;">
+                    <td style="margin: 0px; padding: 0px; font-size:20px; white-space: nowrap;">
                         <strong t-esc="subtotal['name']" />
                     </td>
 
@@ -297,7 +289,7 @@
                 </tr>
             </xpath>
             <xpath expr="//tr[@class='border-black o_total']" position="replace">
-                <td style="margin: 0px; padding: 0px; font-size:20px; white-space: normal; word-break: break-word;">
+                <td style="margin: 0px; padding: 0px; font-size:20px; white-space: nowrap;">
                     <strong>Total</strong>
                 </td>
                 <td class="text-end" style="margin: 0px; padding: 0px; font-size:20px; white-space: nowrap;">
