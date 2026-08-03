@@ -122,8 +122,6 @@
                 </div>
 
             </field>
-            <field name="report_template" ref=""/>
-            <field name="report_name"></field>
             <field name="auto_delete" eval="True"/>
         </record>
     </data>
