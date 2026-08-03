@@ -4,15 +4,15 @@
         <field name="name">ganafote.report.invoice.document</field>
         <field name="inherit_id" ref="account.report_invoice_document" />
         <field name="arch" type="xml">
-            <xpath expr="//div[@class='page']/h2" position="replace">
+            <xpath expr="//t[@t-set='layout_document_title']" position="replace">
 
                 <t t-set="company_color"
                     t-value="{1: '#C3C7C9', 2: '#222036', 3: '#aeef9a', 4: '#bf954b'}.get(o.company_id.id, '#222036')" />
                 <t t-set="colorbackground"
-                    t-value="'background-color:%s; display:inline;border-radius: 20px; padding: 5px 10px;' % company_color" />
+                    t-value="'color:#ffffff; background-color:%s; display:inline-block;border-radius: 20px; padding: 5px 10px;' % company_color" />
 
-                <h2 style="color:#ffffff;">
-                    <div t-att-style="colorbackground">
+                <t t-set="layout_document_title">
+                    <span t-att-style="colorbackground">
                         <span
                             t-if="o.move_type == 'out_invoice' and o.state == 'posted'"
                         >FACTURA
@@ -43,12 +43,12 @@
                             t-if="o.name != '/'"
                             t-field="o.name"
                         />
-                    </div>
-                </h2>
+                    </span>
+                </t>
             </xpath>
             <xpath expr="//div[@name='origin']" position="replace" />
             <xpath expr="//div[@name='reference']" position="replace" />
-            <xpath expr="//table/thead" position="replace">
+            <xpath expr="//table[hasclass('o_main_table')]/thead" position="replace">
                 <thead style="display: table-row-group">
                     <tr>
                         <th name="th_description" style="text-align:left;">Descripción</th>
@@ -68,7 +68,7 @@
                     </tr>
                 </thead>
             </xpath>
-            <xpath expr="//table/tbody" position="replace">
+            <xpath expr="//table[hasclass('o_main_table')]/tbody" position="replace">
                 <tbody class="invoice_tbody">
                     <t t-set="current_subtotal" t-value="0" />
                     <t
@@ -177,7 +177,7 @@
             <xpath expr="//p[@name='payment_communication']" position="attributes">
                 <attribute name="style">margin-top: 5px;</attribute>
             </xpath>
-            <xpath expr="//div[@name='payment_term']" position="after">
+            <xpath expr="//span[@name='payment_term']" position="after">
                 <div style="font-size:11px; margin-top:15px; page-break-inside: avoid;">
                     <span style="font-weight:bolder;">Información sobre protección de datos:</span>
                     Como responsable del tratamiento le informamos que recabamos sus datos con la

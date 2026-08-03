@@ -4,29 +4,29 @@
         inherit_id="sale.report_saleorder_document"
     >
         <xpath expr="//t[@t-set='information_block']" position="replace"/>
-        <xpath expr="//h2[@class='mt-4']" position="replace">
-            <t t-set="company_color"
-               t-value="{1: '#C3C7C9', 2: '#222036', 3: '#aeef9a', 4: '#bf954b'}.get(doc.company_id.id, '#222036')" />
-            <t t-set="colorbackground"
-               t-value="'color:#ffffff; background-color:%s; display:inline;border-radius: 20px; padding: 7.5px 10px;' % company_color" />
-            <h2 class="mt-2" t-att-style="colorbackground">
-                <t t-if="not (env.context.get('proforma', False) or is_pro_forma)">
-                    <span
-                        t-if="doc.state not in ['draft','sent']"
-                    >PEDIDO
-                    </span>
-                    <span
-                        t-if="doc.state in ['draft','sent']"
-                    >PRESUPUESTO
-                    </span>
-                </t>
-                <t t-if="env.context.get('proforma', False) or is_pro_forma">
-                    <span>FACTURA PRO-FORMA</span>
-                </t>
-                <span t-field="doc.name"/>
-            </h2>
+        <xpath expr="//t[@t-set='layout_document_title']" position="replace">
+            <t t-set="layout_document_title">
+                <t t-set="company_color"
+                   t-value="{1: '#C3C7C9', 2: '#222036', 3: '#aeef9a', 4: '#bf954b'}.get(doc.company_id.id, '#222036')" />
+                <t t-set="colorbackground"
+                   t-value="'color:#ffffff; background-color:%s; display:inline-block;border-radius: 20px; padding: 7.5px 10px;' % company_color" />
+                <span t-att-style="colorbackground">
+                    <t t-if="not (env.context.get('proforma', False) or is_pro_forma)">
+                        <span
+                            t-if="doc.state not in ['draft','sent']"
+                        >PEDIDO </span>
+                        <span
+                            t-if="doc.state in ['draft','sent']"
+                        >PRESUPUESTO </span>
+                    </t>
+                    <t t-if="env.context.get('proforma', False) or is_pro_forma">
+                        <span>FACTURA PRO-FORMA </span>
+                    </t>
+                    <span t-field="doc.name"/>
+                </span>
+            </t>
         </xpath>
-        <xpath expr="//table/thead" position="replace">
+        <xpath expr="//table[hasclass('o_main_table')]/thead" position="replace">
             <thead style="display: table-row-group">
                 <tr>
                     <th name="th_description" style="text-align:left;">Descripción</th>
@@ -53,7 +53,7 @@
                 </tr>
             </thead>
         </xpath>
-        <xpath expr="//table/tbody" position="replace">
+        <xpath expr="//table[hasclass('o_main_table')]/tbody" position="replace">
             <tbody class="sale_tbody">
 
                 <t t-set="current_section" t-value="None"/>
