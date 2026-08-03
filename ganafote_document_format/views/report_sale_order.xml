@@ -2,6 +2,7 @@
     <template
         id="ganafote_report_saleorder_document"
         inherit_id="sale.report_saleorder_document"
+        priority="99"
     >
         <xpath expr="//t[@t-set='information_block']" position="replace"/>
         <xpath expr="//t[@t-set='layout_document_title']" position="replace">
