@@ -229,7 +229,7 @@
                             totals-->
                             <t t-if="o.tax_totals" t-call="account.document_tax_totals">
                                 <t t-set="tax_totals" t-value="o.tax_totals" />
-                                <t t-set="currency" t-value="o.currency_id" />
+                                <t t-set="currency" t-value="o.currency_id or o.company_id.currency_id" />
                             </t>
 
                             <!--Payments-->
@@ -285,7 +285,7 @@
                             <span
                                 t-att-class="oe_subtotal_footer_separator"
                                 t-out="subtotal['base_amount_currency']"
-                                t-options="{'widget': 'monetary', 'display_currency': currency}"
+                                t-options="{'widget': 'monetary', 'display_currency': currency or env.company.currency_id}"
                             />
                         </strong>
                     </td>
@@ -299,7 +299,7 @@
                     <td class="text-end" style="margin: 0px; padding: 0px; font-size:20px; white-space: nowrap;">
                         <strong
                             t-out="tax_totals['total_amount_currency']"
-                            t-options="{'widget': 'monetary', 'display_currency': currency}"
+                            t-options="{'widget': 'monetary', 'display_currency': currency or env.company.currency_id}"
                         />
                     </td>
                 </tr>
