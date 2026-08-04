@@ -65,23 +65,23 @@
                         t-att-class="'bg-200 font-weight-bold o_line_section' if line.display_type == 'line_section' else 'font-italic o_line_note' if line.display_type == 'line_note' else ''"
                     >
                         <t t-if="not line.display_type">
-                            <td name="td_name">
+                            <td name="td_name" style="padding-top:2px;padding-bottom:2px;line-height:1.15;">
                                 <span t-field="line.name"/>
                             </td>
-                            <td name="td_quantity" style="text-align:right;">
+                            <td name="td_quantity" style="text-align:right;padding-top:2px;padding-bottom:2px;line-height:1.15;">
                                 <span t-field="line.product_uom_qty"/>
                             </td>
-                            <td name="td_priceunit" style="text-align:right;">
+                            <td name="td_priceunit" style="text-align:right;padding-top:2px;padding-bottom:2px;line-height:1.15;">
                                 <span t-field="line.price_unit"/>
                             </td>
                             <td
                                 t-if="display_discount"
-                                style="text-align:right;"
+                                style="text-align:right;padding-top:2px;padding-bottom:2px;line-height:1.15;"
                                 groups="product.group_discount_per_so_line"
                             >
                                 <span t-field="line.discount"/>
                             </td>
-                            <td name="td_subtotal" class="o_price_total" style="text-align:right;">
+                            <td name="td_subtotal" class="o_price_total" style="text-align:right;padding-top:2px;padding-bottom:2px;line-height:1.15;">
                                 <span
                                     t-field="line.price_subtotal"
                                     groups="account.group_show_line_subtotals_tax_excluded"
@@ -128,31 +128,34 @@
             </tbody>
         </xpath>
         <xpath expr="//div[hasclass('clearfix')]" position="after">
+            <style>
+                #total table td, #total table th {
+                    padding-top: 1px !important;
+                    padding-bottom: 1px !important;
+                    line-height: 1.1 !important;
+                }
+            </style>
             <div style="width:100%;display:block">
+                <t t-if="doc.company_id.id == 1">
+                    <div style="width:100%;margin-top:2px;page-break-inside:avoid;break-inside:avoid;">
+                        <div>
+                            <p style="font-weight:bolder">OBSERVACIONES</p>
+                        </div>
+                        <p style="font-weight:bolder">DISEÑOS GRATUITOS.</p>
+                        <p
+                            style="display:block;width:100%;"
+                        >*Los diseños son gratuitos siempre que lleve un pedido solicitado y aceptado por el
+                            cliente. Incluidos nombre, número, logos de patrocinadores, eslogan,
+                            leyendas...Todo cerrado en prendas sublimadas.
+                            Todas las prendas vienen individualmente plastificadas y planchadas.
+                        </p>
+                        <p>
+                            Plazos de entrega = una vez ingresado el 50%, pedido cerrado y diseños
+                            aceptados, necesitamos 3-4 semanas.
+                        </p>
+                    </div>
+                </t>
                 <table style="width:100%;border-color:white;">
-                    <t t-if="doc.company_id.id == 1">
-                        <tr>
-                            <td>
-                                <div style="width:100%;margin-top:2px;">
-                                    <div>
-                                        <p style="font-weight:bolder">OBSERVACIONES</p>
-                                    </div>
-                                    <p style="font-weight:bolder">DISEÑOS GRATUITOS.</p>
-                                    <p
-                                        style="display:block;width:100%;"
-                                    >*Los diseños son gratuitos siempre que lleve un pedido solicitado y aceptado por el
-                                        cliente. Incluidos nombre, número, logos de patrocinadores, eslogan,
-                                        leyendas...Todo cerrado en prendas sublimadas.
-                                        Todas las prendas vienen individualmente plastificadas y planchadas.
-                                    </p>
-                                    <p>
-                                        Plazos de entrega = una vez ingresado el 50%, pedido cerrado y diseños
-                                        aceptados, necesitamos 3-4 semanas.
-                                    </p>
-                                </div>
-                            </td>
-                        </tr>
-                    </t>
                     <tr>
                         <td>
                             <div
@@ -176,7 +179,7 @@
                     <t t-if="doc.company_id.id == 1">
                         <tr>
                             <td>
-                                <div style="width:100%;display:block">
+                                <div style="width:100%;display:block;font-size:11px;">
                                     <div style="width:100%;margin-top:10px;">
                                         <div>
                                             <p
@@ -291,10 +294,10 @@
                t-value="{1: '#C3C7C9', 2: '#222036', 3: '#aeef9a', 4: '#bf954b'}.get(doc.company_id.id, '#222036')" />
             <div
                 t-attf-style="border: 2px solid {{ company_border_color }}; border-radius:20px;display:inline-flex;text-align:center; padding:10px 20px; margin-top: 30px;">
-                Términos y condiciones: https://ganafote16.xtendoo.es/terms
+                Términos y condiciones: https://ganafote19.xtendoo.es/terms
             </div>
 
-            <div style="font-size:14px; margin-top:20px; page-break-inside: avoid;">
+            <div style="font-size:11px; margin-top:20px; page-break-inside: avoid;">
                 <span style="font-weight:bolder;">Información sobre protección de datos:</span>
                 Como responsable del tratamiento le informamos que
                 recabamos sus datos con la finalidad de elaborar su presupuesto. La base legal es el
