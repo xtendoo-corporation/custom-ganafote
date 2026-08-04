@@ -63,7 +63,7 @@
                 </div>
             </field>
             <field name="report_template_ids" eval="[(6, 0, [ref('sale.action_report_saleorder')])]" />
-            <field name="lang">${object.partner_id.lang}</field>
+            <field name="lang">{{object.partner_id.lang}}</field>
             <field name="use_default_to" eval="False" />
             <field name="partner_to">{{ object.partner_id.id }}</field>
             <field name="auto_delete" eval="True" />
