@@ -164,13 +164,13 @@
                             >
                                 <t t-if="doc.company_id.id == 1">
                                     <p
-                                        style="border: 2px solid #C3C7C9; border-radius:20px; display:inline-block;text-align:center; padding:10px 20px; margin-top:5px;font-size:11px;white-space:nowrap;"
+                                        style="border: 2px solid #C3C7C9; border-radius:20px; display:inline-block;text-align:center; padding:10px 20px; margin-top:5px;font-size:13px;white-space:nowrap;"
                                     >CUENTA GAÑAFOTE SLU = IBAN ES65 3187 0022 6266 8329 0925
                                     </p>
                                 </t>
                                 <t t-if="doc.company_id.id != 1">
                                     <p
-                                        style="border: 2px solid #222036; border-radius:20px; display:inline-block;text-align:center; padding:10px 20px; margin-top:5px;font-size:11px;white-space:nowrap;"
+                                        style="border: 2px solid #222036; border-radius:20px; display:inline-block;text-align:center; padding:10px 20px; margin-top:5px;font-size:13px;white-space:nowrap;"
                                     >CUENTA GAÑAFOTE SPORTS EVENTS = IBAN ES61 3187 0022 6966 8329 1527
                                     </p>
                                 </t>
