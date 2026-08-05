@@ -30,18 +30,19 @@
         <xpath expr="//table[hasclass('o_main_table')]/thead" position="replace">
             <thead style="display: table-row-group">
                 <tr>
-                    <th name="th_description" style="text-align:left;">Descripción</th>
-                    <th name="th_quantity" style="text-align:right;">Cantidad</th>
-                    <th name="th_priceunit" style="text-align:right;">Precio/U</th>
+                    <th name="th_description" style="text-align:left;font-weight:bold;">Descripción</th>
+                    <th name="th_quantity" style="text-align:right;font-weight:bold;">Cantidad</th>
+                    <th name="th_priceunit" style="text-align:right;font-weight:bold;">Precio/U</th>
                     <th
                         name="th_discount"
                         t-if="display_discount"
                         class="text-right"
+                        style="font-weight:bold;"
                         groups="product.group_discount_per_so_line"
                     >
                         <span>Desc.%</span>
                     </th>
-                    <th name="th_subtotal" style="text-align:right;">
+                    <th name="th_subtotal" style="text-align:right;font-weight:bold;">
                         <span
                             groups="account.group_show_line_subtotals_tax_excluded"
                         >Total
@@ -65,23 +66,23 @@
                         t-att-class="'bg-200 font-weight-bold o_line_section' if line.display_type == 'line_section' else 'font-italic o_line_note' if line.display_type == 'line_note' else ''"
                     >
                         <t t-if="not line.display_type">
-                            <td name="td_name" style="padding-top:2px;padding-bottom:2px;line-height:1.15;">
+                            <td name="td_name" style="padding-top:4px;padding-bottom:4px;line-height:1.3;">
                                 <span t-field="line.name"/>
                             </td>
-                            <td name="td_quantity" style="text-align:right;padding-top:2px;padding-bottom:2px;line-height:1.15;">
+                            <td name="td_quantity" style="text-align:right;padding-top:4px;padding-bottom:4px;line-height:1.3;">
                                 <span t-field="line.product_uom_qty"/>
                             </td>
-                            <td name="td_priceunit" style="text-align:right;padding-top:2px;padding-bottom:2px;line-height:1.15;">
+                            <td name="td_priceunit" style="text-align:right;padding-top:4px;padding-bottom:4px;line-height:1.3;">
                                 <span t-field="line.price_unit"/>
                             </td>
                             <td
                                 t-if="display_discount"
-                                style="text-align:right;padding-top:2px;padding-bottom:2px;line-height:1.15;"
+                                style="text-align:right;padding-top:4px;padding-bottom:4px;line-height:1.3;"
                                 groups="product.group_discount_per_so_line"
                             >
                                 <span t-field="line.discount"/>
                             </td>
-                            <td name="td_subtotal" class="o_price_total" style="text-align:right;padding-top:2px;padding-bottom:2px;line-height:1.15;">
+                            <td name="td_subtotal" class="o_price_total" style="text-align:right;padding-top:4px;padding-bottom:4px;line-height:1.3;">
                                 <span
                                     t-field="line.price_subtotal"
                                     groups="account.group_show_line_subtotals_tax_excluded"
@@ -130,9 +131,9 @@
         <xpath expr="//div[hasclass('clearfix')]" position="after">
             <style>
                 #total table td, #total table th {
-                    padding-top: 1px !important;
-                    padding-bottom: 1px !important;
-                    line-height: 1.1 !important;
+                    padding-top: 2px !important;
+                    padding-bottom: 2px !important;
+                    line-height: 1.25 !important;
                 }
             </style>
             <div style="width:100%;display:block">
@@ -163,13 +164,13 @@
                             >
                                 <t t-if="doc.company_id.id == 1">
                                     <p
-                                        style="border: 2px solid #C3C7C9; border-radius:20px; display:inline-block;text-align:center; padding:10px 20px; margin-top:5px;"
+                                        style="border: 2px solid #C3C7C9; border-radius:20px; display:inline-block;text-align:center; padding:10px 20px; margin-top:5px;font-size:11px;"
                                     >CUENTA GAÑAFOTE SLU = IBAN ES65 3187 0022 6266 8329 0925
                                     </p>
                                 </t>
                                 <t t-if="doc.company_id.id != 1">
                                     <p
-                                        style="border: 2px solid #222036; border-radius:20px; display:inline-block;text-align:center; padding:10px 20px; margin-top:5px;"
+                                        style="border: 2px solid #222036; border-radius:20px; display:inline-block;text-align:center; padding:10px 20px; margin-top:5px;font-size:11px;"
                                     >CUENTA GAÑAFOTE SPORTS EVENTS = IBAN ES61 3187 0022 6966 8329 1527
                                     </p>
                                 </t>
@@ -179,7 +180,7 @@
                     <t t-if="doc.company_id.id == 1">
                         <tr>
                             <td>
-                                <div style="width:100%;display:block;font-size:11px;">
+                                <div style="width:100%;display:block;font-size:13px;">
                                     <div style="width:100%;margin-top:10px;">
                                         <div>
                                             <p
