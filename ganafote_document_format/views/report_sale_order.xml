@@ -164,17 +164,13 @@
                             >
                                 <t t-if="doc.company_id.id == 1">
                                     <p
-                                        style="border: 2px solid #C3C7C9; border-radius:20px; display:inline-block;text-align:center; padding:10px 20px; margin-top:5px;font-size:13px;"
+                                        style="border: 2px solid #C3C7C9; border-radius:20px; display:inline-block;text-align:center; padding:15px 20px; margin-top:5px;font-size:13px; line-height: 1.8;"
                                     >
-                                        <div style="margin-bottom: 8px;">
-                                            <!-- Logo de Caixa para primera cuenta -->
-                                            <img src="/ganafote_document_format/static/src/img/caixa.ico" alt="Caixa" style="height: 1em; margin-right: 8px; vertical-align: middle;" />
-                                            CUENTA GAÑAFOTE SLU = IBAN ES65 3187 0022 6266 8329 0925
+                                        <div>
+                                            🏦 CUENTA GAÑAFOTE SLU = IBAN ES65 3187 0022 6266 8329 0925
                                         </div>
                                         <div>
-                                            <!-- Logo de Santander para segunda cuenta -->
-                                            <img src="/ganafote_document_format/static/src/img/santander.ico" alt="Santander" style="height: 1em; margin-right: 8px; vertical-align: middle;" />
-                                            IBAN ES74 0049 0012 7123 1219 3764
+                                            🏦 IBAN ES74 0049 0012 7123 1219 3764
                                         </div>
                                     </p>
                                 </t>
