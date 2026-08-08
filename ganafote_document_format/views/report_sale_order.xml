@@ -167,10 +167,12 @@
                                         style="border: 2px solid #C3C7C9; border-radius:20px; display:inline-block;text-align:center; padding:15px 20px; margin-top:5px;font-size:13px; line-height: 1.8;"
                                     >
                                         <div>
-                                            🏦 CUENTA GAÑAFOTE SLU = IBAN ES65 3187 0022 6266 8329 0925
+                                            <img src="/ganafote_document_format/static/src/img/caixa.png" alt="Caixa" style="height: 16px; margin-right: 6px; vertical-align: middle; display: inline-block;" />
+                                            CUENTA GAÑAFOTE SLU = IBAN ES65 3187 0022 6266 8329 0925
                                         </div>
-                                        <div>
-                                            🏦 IBAN ES74 0049 0012 7123 1219 3764
+                                        <div style="margin-top: 6px;">
+                                            <img src="/ganafote_document_format/static/src/img/santander.png" alt="Santander" style="height: 16px; margin-right: 6px; vertical-align: middle; display: inline-block;" />
+                                            IBAN ES74 0049 0012 7123 1219 3764
                                         </div>
                                     </p>
                                 </t>
