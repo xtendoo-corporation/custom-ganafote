@@ -192,25 +192,34 @@
                     fiscal. De igual modo, podría interponer una reclamación ante la Autoridad de
                     Control en www.aepd.es. </div>
                 <br />
-                <div
-                    style="margin-top:5px; text-align: center; page-break-inside: avoid; display: flex; justify-content: center; flex-wrap: wrap;"
-                >
-                    <t t-if="o.company_id.id == 1">
-                        <p
-                            style="border: 2px solid #C3C7C9; border-radius:20px; display:inline-block;text-align:center; padding:10px 20px; margin-top:5px; font-size: 12px; white-space: normal; max-width: 100%;"
-                        >
-                            <span style="display: inline-block; white-space: nowrap;">
-                                CUENTA&#160;GAÑAFOTE&#160;SLU&#160;=&#160;IBAN&#160;ES65&#160;3187&#160;0022&#160;6266&#160;8329&#160;0925</span>
-                        </p>
-                    </t>
-                    <t t-if="o.company_id.id == 2">
-                        <p
-                            style="border:2px solid #222036;border-radius:20px; display:inline-block;text-align:center; padding:10px 20px; margin-top:5px; font-size: 12px; white-space: normal; max-width: 100%;"
-                        >
-                            <span style="display: inline-block; white-space: nowrap;">
-                                CUENTA&#160;GAÑAFOTE&#160;SPORTS&#160;EVENTS&#160;=&#160;IBAN&#160;ES61&#160;3187&#160;0022&#160;6966&#160;8329&#160;1527</span>
-                        </p>
-                    </t>
+                <div style="margin-top:5px; text-align: center; page-break-inside: avoid; display: flex; justify-content: center; flex-wrap: wrap; gap: 10px;">
+                    <!-- Caixa -->
+                    <div style="border: 2px solid #C3C7C9; border-radius:15px; display:inline-block; text-align:center; padding:10px 12px; margin-top:5px; font-size: 11px;">
+                        <img src="/ganafote_document_format/static/src/img/caixa.png" style="height: 35px; margin-bottom: 5px;" />
+                        <div style="white-space: normal; max-width: 150px; font-weight: bold;">Caixa</div>
+                        <div style="white-space: normal; max-width: 150px; font-size: 10px;">ES65 3187 0022 6266 8329 0925</div>
+                    </div>
+                    
+                    <!-- Santander -->
+                    <div style="border: 2px solid #EC1C24; border-radius:15px; display:inline-block; text-align:center; padding:10px 12px; margin-top:5px; font-size: 11px;">
+                        <img src="/ganafote_document_format/static/src/img/santander.png" style="height: 35px; margin-bottom: 5px;" />
+                        <div style="white-space: normal; max-width: 150px; font-weight: bold;">Santander</div>
+                        <div style="white-space: normal; max-width: 150px; font-size: 10px;">ES74 0049 0012 7123 1219 3764</div>
+                    </div>
+                    
+                    <!-- Caja Rural -->
+                    <div style="border: 2px solid #1E90FF; border-radius:15px; display:inline-block; text-align:center; padding:10px 12px; margin-top:5px; font-size: 11px;">
+                        <img src="/ganafote_document_format/static/src/img/crsur.png" style="height: 35px; margin-bottom: 5px;" />
+                        <div style="white-space: normal; max-width: 150px; font-weight: bold;">Caja Rural</div>
+                        <div style="white-space: normal; max-width: 150px; font-size: 10px;">ES61 3187 0022 6966 8329 1527</div>
+                    </div>
+                    
+                    <!-- Efectivo -->
+                    <div style="border: 2px solid #90EE90; border-radius:15px; display:inline-block; text-align:center; padding:10px 12px; margin-top:5px; font-size: 11px;">
+                        <div style="white-space: normal; max-width: 150px; font-weight: bold; margin-bottom: 8px;">💵</div>
+                        <div style="white-space: normal; max-width: 150px; font-weight: bold;">Efectivo</div>
+                        <div style="white-space: normal; max-width: 150px; font-size: 10px;">Pago en efectivo</div>
+                    </div>
                 </div>
             </xpath>
             <!--            <div class="clearfix mb-4">-->
