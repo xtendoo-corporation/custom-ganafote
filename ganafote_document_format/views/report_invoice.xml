@@ -192,66 +192,206 @@
                     fiscal. De igual modo, podría interponer una reclamación ante la Autoridad de
                     Control en www.aepd.es. </div>
                 <br />
-                <div style="margin-top:5px; text-align: center; page-break-inside: avoid; display: flex; justify-content: center; flex-wrap: wrap; gap: 10px;">
-                    <t t-if="o.company_id.id == 1">
-                        <!-- Caixa -->
-                        <div style="border: 2px solid #C3C7C9; border-radius:15px; display:inline-block; text-align:center; padding:10px 12px; margin-top:5px; font-size: 11px;">
-                            <img src="/ganafote_document_format/static/src/img/caixa.png" style="height: 35px; margin-bottom: 5px;" />
-                            <div style="white-space: normal; max-width: 150px; font-weight: bold;">Caixa</div>
-                            <div style="white-space: normal; max-width: 150px; font-size: 10px;">ES65 3187 0022 6266 8329 0925</div>
-                        </div>
-                        
-                        <!-- Santander -->
-                        <div style="border: 2px solid #EC1C24; border-radius:15px; display:inline-block; text-align:center; padding:10px 12px; margin-top:5px; font-size: 11px;">
-                            <img src="/ganafote_document_format/static/src/img/santander.png" style="height: 35px; margin-bottom: 5px;" />
-                            <div style="white-space: normal; max-width: 150px; font-weight: bold;">Santander</div>
-                            <div style="white-space: normal; max-width: 150px; font-size: 10px;">ES74 0049 0012 7123 1219 3764</div>
-                        </div>
-                        
-                        <!-- Caja Rural -->
-                        <div style="border: 2px solid #1E90FF; border-radius:15px; display:inline-block; text-align:center; padding:10px 12px; margin-top:5px; font-size: 11px;">
-                            <img src="/ganafote_document_format/static/src/img/crsur.png" style="height: 35px; margin-bottom: 5px;" />
-                            <div style="white-space: normal; max-width: 150px; font-weight: bold;">Caja Rural</div>
-                            <div style="white-space: normal; max-width: 150px; font-size: 10px;">ES61 3187 0022 6966 8329 1527</div>
-                        </div>
-                        
-                        <!-- Efectivo -->
-                        <div style="border: 2px solid #90EE90; border-radius:15px; display:inline-block; text-align:center; padding:10px 12px; margin-top:5px; font-size: 11px;">
-                            <div style="white-space: normal; max-width: 150px; font-weight: bold; margin-bottom: 8px;">💵</div>
-                            <div style="white-space: normal; max-width: 150px; font-weight: bold;">Efectivo</div>
-                            <div style="white-space: normal; max-width: 150px; font-size: 10px;">Pago en efectivo</div>
-                        </div>
+
+                <table style="width:100%;border-color:white;">
+                    <tr>
+                        <td>
+                            <div
+                                style="text-align: center;"
+                            >
+                                <t t-if="doc.company_id.id == 1">
+                                    <p
+                                        style="border: 2px solid #C3C7C9; border-radius:20px; display:block;text-align:center; padding:15px 20px; margin-top:5px;font-size:13px; white-space: normal; width: fit-content; margin-left: auto; margin-right: auto;"
+                                    >
+                                        <img src="/ganafote_document_format/static/src/img/crsur.png" alt="Caja Rural" style="height: 13px; margin-right: 6px; vertical-align: middle;" />
+                                        IBAN ES65 3187 0022 6266 8329 0925
+                                        <br/>
+                                        <img src="/ganafote_document_format/static/src/img/santander.png" alt="Santander" style="height: 13px; margin-right: 6px; vertical-align: middle;" />
+                                        IBAN ES74 0049 0012 7123 1219 3764
+                                    </p>
+                                </t>
+                                <t t-if="doc.company_id.id != 1">
+                                    <p
+                                        style="border: 2px solid #222036; border-radius:20px; display:inline-block;text-align:center; padding:10px 20px; margin-top:5px;font-size:13px;white-space:nowrap;"
+                                    >CUENTA GAÑAFOTE SPORTS EVENTS = IBAN ES61 3187 0022 6966 8329 1527
+                                    </p>
+                                </t>
+                            </div>
+                        </td>
+                    </tr>
+                    <t t-if="doc.company_id.id == 1">
+                        <tr>
+                            <td>
+                                <div style="width:100%;display:block;font-size:13px;">
+                                    <div style="width:100%;margin-top:10px;">
+                                        <div>
+                                            <p
+                                                style="background-color:#C3C7C9;width:50%;display:block;border-radius: 20px;padding: 10px 20px;font-weight:bolder;"
+                                            >Condiciones tras la aceptación del presupuesto
+                                            </p>
+                                        </div>
+                                        <ol>
+                                            <li style="margin-bottom: 15px;">
+                                                El cliente debe saber que las maquetaciones en 3D son una
+                                                aproximación
+                                                al diseño real.
+                                            </li>
+                                            <li style="margin-bottom: 15px;">
+                                                Los colores pueden tener alguna variación respecto al boceto
+                                                digital. El
+                                                cliente debe elegir
+                                                los pantones de color para los productos presupuestados.
+                                            </li>
+                                            <li style="margin-bottom: 15px;">
+                                                El cliente acepta el diseño 3D sabiendo que no podrá sufrir
+                                                variaciones
+                                                tras la aceptación.
+                                                Una vez el pedido es lanzado a fabrica no podrá verse modificado.
+                                            </li>
+                                            <li style="margin-bottom: 15px;">
+                                                El cliente revisará y dará visto bueno al pedido enviado por el área
+                                                de
+                                                administración.
+                                                Cualquier error del mismo, tras la revisión, será responsabilidad
+                                                del
+                                                cliente.
+                                            </li>
+                                            <li style="margin-bottom: 15px;">
+                                                Una vez aceptado el diseño y el pedido correspondiente, GAÑAFOTE SLU
+                                                no
+                                                se hará
+                                                responsable de los posibles errores tanto de ortografía, textos,
+                                                formas,
+                                                color, tamaño, talla,
+                                                logos, etc.
+                                            </li>
+                                            <li style="margin-bottom: 15px;">
+                                                Los tiempos de entregas será de 3 a 4 semanas en &quot;temporada
+                                                normal&quot;.
+                                                Los tiempos de
+                                                entregas puede verse incrementado en 1 o 2 semanas en &quot;temporada
+                                                alta&quot;.
+                                            </li>
+                                            <li style="margin-bottom: 15px;">
+                                                La tabla de medida es una referencia, las medidas para la selección
+                                                de
+                                                tallas pueden variar
+                                                0.50 o 1 cm con respecto al documento que se envía. Las tallas deben
+                                                medirse de la misma
+                                                forma que se indica en el documento.
+                                            </li>
+                                        </ol>
+                                        <div>
+                                            <p
+                                                style="background-color:#C3C7C9;width:50%;display:block;border-radius: 20px;padding: 10px 20px;font-weight:bolder;"
+                                            >Condiciones para tramitación de incidencias
+                                            </p>
+                                        </div>
+                                        <ol>
+                                            <li style="margin-bottom: 15px;">
+                                                El cliente debe verificar los puntos 4 y 5 de la aceptación de
+                                                presupuesto.
+                                            </li>
+                                            <li style="margin-bottom: 15px;">
+                                                Si se sospecha de una incidencia en tallas y medidas, el cliente
+                                                deberá
+                                                tomará las medidas
+                                                como se indica en la tabla de medidas, teniendo en cuenta que la
+                                                prenda
+                                                debe estar bien
+                                                estirada y sin arrugas. Para enviar fotos a su comercial y aclarar
+                                                cualquier situacion.
+                                            </li>
+                                            <li style="margin-bottom: 15px;">
+                                                El comercial podrá solicitarle el envío del producto a las
+                                                instalaciones
+                                                de GAÑAFOTE SLU,
+                                                para su verificación en caso de existir una incidencia.
+                                            </li>
+                                            <li style="margin-bottom: 15px;">
+                                                En caso de existir una incidencia el comercial deberá empezar el
+                                                proceso
+                                                de dicha
+                                                incidencia. El cliente deberá proceder al envió de los productos
+                                                defectuosos, para que
+                                                GAÑAFOTE SLU, haga llegar esos productos a fábrica y se inicié la
+                                                nueva
+                                                producción o
+                                                solución de los problemas ocasionados.
+                                            </li>
+                                            <li style="margin-bottom: 15px;">
+                                                Las incidencia se sacarán en el menor tiempo posible, pero siempre
+                                                sujeto al volumen de
+                                                producción de fábrica.
+                                            </li>
+                                        </ol>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
                     </t>
-                    <t t-if="o.company_id.id == 2">
-                        <!-- Caixa -->
-                        <div style="border: 2px solid #222036; border-radius:15px; display:inline-block; text-align:center; padding:10px 12px; margin-top:5px; font-size: 11px;">
-                            <img src="/ganafote_document_format/static/src/img/caixa.png" style="height: 35px; margin-bottom: 5px;" />
-                            <div style="white-space: normal; max-width: 150px; font-weight: bold;">Caixa</div>
-                            <div style="white-space: normal; max-width: 150px; font-size: 10px;">ES65 3187 0022 6266 8329 0925</div>
-                        </div>
-                        
-                        <!-- Santander -->
-                        <div style="border: 2px solid #EC1C24; border-radius:15px; display:inline-block; text-align:center; padding:10px 12px; margin-top:5px; font-size: 11px;">
-                            <img src="/ganafote_document_format/static/src/img/santander.png" style="height: 35px; margin-bottom: 5px;" />
-                            <div style="white-space: normal; max-width: 150px; font-weight: bold;">Santander</div>
-                            <div style="white-space: normal; max-width: 150px; font-size: 10px;">ES74 0049 0012 7123 1219 3764</div>
-                        </div>
-                        
-                        <!-- Caja Rural -->
-                        <div style="border: 2px solid #1E90FF; border-radius:15px; display:inline-block; text-align:center; padding:10px 12px; margin-top:5px; font-size: 11px;">
-                            <img src="/ganafote_document_format/static/src/img/crsur.png" style="height: 35px; margin-bottom: 5px;" />
-                            <div style="white-space: normal; max-width: 150px; font-weight: bold;">Caja Rural</div>
-                            <div style="white-space: normal; max-width: 150px; font-size: 10px;">ES61 3187 0022 6966 8329 1527</div>
-                        </div>
-                        
-                        <!-- Efectivo -->
-                        <div style="border: 2px solid #90EE90; border-radius:15px; display:inline-block; text-align:center; padding:10px 12px; margin-top:5px; font-size: 11px;">
-                            <div style="white-space: normal; max-width: 150px; font-weight: bold; margin-bottom: 8px;">💵</div>
-                            <div style="white-space: normal; max-width: 150px; font-weight: bold;">Efectivo</div>
-                            <div style="white-space: normal; max-width: 150px; font-size: 10px;">Pago en efectivo</div>
-                        </div>
-                    </t>
-                </div>
+                </table>
+
+<!--                <div style="margin-top:5px; text-align: center; page-break-inside: avoid; display: flex; justify-content: center; flex-wrap: wrap; gap: 10px;">-->
+<!--                    <t t-if="o.company_id.id == 1">-->
+<!--                        &lt;!&ndash; Caixa &ndash;&gt;-->
+<!--                        <div style="border: 2px solid #C3C7C9; border-radius:15px; display:inline-block; text-align:center; padding:10px 12px; margin-top:5px; font-size: 11px;">-->
+<!--                            <img src="/ganafote_document_format/static/src/img/caixa.png" style="height: 35px; margin-bottom: 5px;" />-->
+<!--                            <div style="white-space: normal; max-width: 150px; font-weight: bold;">Caixa</div>-->
+<!--                            <div style="white-space: normal; max-width: 150px; font-size: 10px;">ES65 3187 0022 6266 8329 0925</div>-->
+<!--                        </div>-->
+
+<!--                        &lt;!&ndash; Santander &ndash;&gt;-->
+<!--                        <div style="border: 2px solid #EC1C24; border-radius:15px; display:inline-block; text-align:center; padding:10px 12px; margin-top:5px; font-size: 11px;">-->
+<!--                            <img src="/ganafote_document_format/static/src/img/santander.png" style="height: 35px; margin-bottom: 5px;" />-->
+<!--                            <div style="white-space: normal; max-width: 150px; font-weight: bold;">Santander</div>-->
+<!--                            <div style="white-space: normal; max-width: 150px; font-size: 10px;">ES74 0049 0012 7123 1219 3764</div>-->
+<!--                        </div>-->
+
+<!--                        &lt;!&ndash; Caja Rural &ndash;&gt;-->
+<!--                        <div style="border: 2px solid #1E90FF; border-radius:15px; display:inline-block; text-align:center; padding:10px 12px; margin-top:5px; font-size: 11px;">-->
+<!--                            <img src="/ganafote_document_format/static/src/img/crsur.png" style="height: 35px; margin-bottom: 5px;" />-->
+<!--                            <div style="white-space: normal; max-width: 150px; font-weight: bold;">Caja Rural</div>-->
+<!--                            <div style="white-space: normal; max-width: 150px; font-size: 10px;">ES61 3187 0022 6966 8329 1527</div>-->
+<!--                        </div>-->
+
+<!--                        &lt;!&ndash; Efectivo &ndash;&gt;-->
+<!--                        <div style="border: 2px solid #90EE90; border-radius:15px; display:inline-block; text-align:center; padding:10px 12px; margin-top:5px; font-size: 11px;">-->
+<!--                            <div style="white-space: normal; max-width: 150px; font-weight: bold; margin-bottom: 8px;">💵</div>-->
+<!--                            <div style="white-space: normal; max-width: 150px; font-weight: bold;">Efectivo</div>-->
+<!--                            <div style="white-space: normal; max-width: 150px; font-size: 10px;">Pago en efectivo</div>-->
+<!--                        </div>-->
+<!--                    </t>-->
+<!--                    <t t-if="o.company_id.id == 2">-->
+<!--                        &lt;!&ndash; Caixa &ndash;&gt;-->
+<!--                        <div style="border: 2px solid #222036; border-radius:15px; display:inline-block; text-align:center; padding:10px 12px; margin-top:5px; font-size: 11px;">-->
+<!--                            <img src="/ganafote_document_format/static/src/img/caixa.png" style="height: 35px; margin-bottom: 5px;" />-->
+<!--                            <div style="white-space: normal; max-width: 150px; font-weight: bold;">Caixa</div>-->
+<!--                            <div style="white-space: normal; max-width: 150px; font-size: 10px;">ES65 3187 0022 6266 8329 0925</div>-->
+<!--                        </div>-->
+
+<!--                        &lt;!&ndash; Santander &ndash;&gt;-->
+<!--                        <div style="border: 2px solid #EC1C24; border-radius:15px; display:inline-block; text-align:center; padding:10px 12px; margin-top:5px; font-size: 11px;">-->
+<!--                            <img src="/ganafote_document_format/static/src/img/santander.png" style="height: 35px; margin-bottom: 5px;" />-->
+<!--                            <div style="white-space: normal; max-width: 150px; font-weight: bold;">Santander</div>-->
+<!--                            <div style="white-space: normal; max-width: 150px; font-size: 10px;">ES74 0049 0012 7123 1219 3764</div>-->
+<!--                        </div>-->
+
+<!--                        &lt;!&ndash; Caja Rural &ndash;&gt;-->
+<!--                        <div style="border: 2px solid #1E90FF; border-radius:15px; display:inline-block; text-align:center; padding:10px 12px; margin-top:5px; font-size: 11px;">-->
+<!--                            <img src="/ganafote_document_format/static/src/img/crsur.png" style="height: 35px; margin-bottom: 5px;" />-->
+<!--                            <div style="white-space: normal; max-width: 150px; font-weight: bold;">Caja Rural</div>-->
+<!--                            <div style="white-space: normal; max-width: 150px; font-size: 10px;">ES61 3187 0022 6966 8329 1527</div>-->
+<!--                        </div>-->
+
+<!--                        &lt;!&ndash; Efectivo &ndash;&gt;-->
+<!--                        <div style="border: 2px solid #90EE90; border-radius:15px; display:inline-block; text-align:center; padding:10px 12px; margin-top:5px; font-size: 11px;">-->
+<!--                            <div style="white-space: normal; max-width: 150px; font-weight: bold; margin-bottom: 8px;">💵</div>-->
+<!--                            <div style="white-space: normal; max-width: 150px; font-weight: bold;">Efectivo</div>-->
+<!--                            <div style="white-space: normal; max-width: 150px; font-size: 10px;">Pago en efectivo</div>-->
+<!--                        </div>-->
+<!--                    </t>-->
+<!--                </div>-->
             </xpath>
             <!--            <div class="clearfix mb-4">-->
             <xpath expr="//div[@id='total']" position="replace">
@@ -306,6 +446,29 @@
                         </table>
                     </div>
                 </div>
+            </xpath>
+            <xpath expr="//div[@id='total']" position="after">
+                <table style="width:100%;border-color:white; margin-top: 20px;">
+                    <tr>
+                        <td>
+                            <div style="text-align: center;">
+                                <t t-if="o.company_id.id == 1">
+                                    <p style="border: 2px solid #C3C7C9; border-radius:20px; display:block;text-align:center; padding:15px 20px; margin-top:5px;font-size:13px; white-space: normal; width: fit-content; margin-left: auto; margin-right: auto;">
+                                        <img src="/ganafote_document_format/static/src/img/crsur.png" alt="Caja Rural" style="height: 13px; margin-right: 6px; vertical-align: middle;" />
+                                        IBAN ES65 3187 0022 6266 8329 0925
+                                        <br/>
+                                        <img src="/ganafote_document_format/static/src/img/santander.png" alt="Santander" style="height: 13px; margin-right: 6px; vertical-align: middle;" />
+                                        IBAN ES74 0049 0012 7123 1219 3764
+                                    </p>
+                                </t>
+                                <t t-if="o.company_id.id != 1">
+                                    <p style="border: 2px solid #222036; border-radius:20px; display:inline-block;text-align:center; padding:10px 20px; margin-top:5px;font-size:13px;white-space:nowrap;">CUENTA GAÑAFOTE SPORTS EVENTS = IBAN ES61 3187 0022 6966 8329 1527
+                                    </p>
+                                </t>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
             </xpath>
         </field>
     </record>
