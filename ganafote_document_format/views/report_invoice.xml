@@ -48,21 +48,25 @@
             </xpath>
             <xpath expr="//div[@name='origin']" position="replace" />
             <xpath expr="//div[@name='reference']" position="replace" />
+            <xpath expr="//div[@id='partner_vat_address_not_same_as_shipping'] | //div[@id='partner_vat_address_same_as_shipping'] | //div[@id='partner_vat_no_shipping']" position="attributes">
+                <attribute name="style">margin-top:-0.75em;</attribute>
+            </xpath>
             <xpath expr="//table[hasclass('o_main_table')]/thead" position="replace">
                 <thead style="display: table-row-group">
                     <tr>
-                        <th name="th_description" style="text-align:left;">Descripción</th>
-                        <th name="th_quantity" style="text-align:right;">Cantidad</th>
-                        <th name="th_priceunit" style="text-align:right;">Precio/U</th>
+                        <th name="th_description" style="text-align:left;font-weight:bold;">Descripción</th>
+                        <th name="th_quantity" style="text-align:right;font-weight:bold;">Cantidad</th>
+                        <th name="th_priceunit" style="text-align:right;font-weight:bold;">Precio/U</th>
                         <th
                             name="th_discount"
                             t-if="display_discount"
-                            style="text-align:right;"
+                            class="text-right"
+                            style="font-weight:bold;"
                             groups="product.group_discount_per_so_line"
                         >
                             <span>Desc.%</span>
                         </th>
-                        <th name="th_subtotal" style="text-align:right;">
+                        <th name="th_subtotal" style="text-align:right;font-weight:bold;">
                             <span>Total</span>
                         </th>
                     </tr>
@@ -96,20 +100,20 @@
                                 name="account_invoice_line_accountable"
                             >
                                 <td name="account_invoice_line_name"
-                                    style="margin: 2px; padding: 2px;">
+                                    style="padding-top:4px;padding-bottom:4px;line-height:1.3;">
                                     <span
                                         t-field="line.name"
                                         t-options="{'widget': 'text'}"
                                     />
                                 </td>
-                                <td style="text-align:right; margin: 2px; padding: 2px;">
+                                <td style="text-align:right;padding-top:4px;padding-bottom:4px;line-height:1.3;">
                                     <span t-field="line.quantity" />
                                     <span
                                         t-field="line.product_uom_id"
                                         groups="uom.group_uom"
                                     />
                                 </td>
-                                <td style="text-align:right; margin: 2px; padding: 2px;"
+                                <td style="text-align:right;padding-top:4px;padding-bottom:4px;line-height:1.3;"
                                     t-attf-class="text-right {{ 'd-none d-md-table-cell' if report_type == 'html' else '' }}"
                                 >
                                     <span
@@ -117,7 +121,7 @@
                                         t-field="line.price_unit"
                                     />
                                 </td>
-                                <td style="text-align:right; margin: 2px; padding: 2px;"
+                                <td style="text-align:right;padding-top:4px;padding-bottom:4px;line-height:1.3;"
                                     t-if="display_discount"
                                     t-attf-class="text-right {{ 'd-none d-md-table-cell' if report_type == 'html' else '' }}"
                                 >
@@ -131,7 +135,7 @@
                                       <span t-esc="', '.join(map(lambda x: (x.description or x.name), line.tax_ids))" id="line_tax_ids"/>
                                   </td> -->
                                 <td class="o_price_total"
-                                    style="text-align:right; margin: 2px; padding: 2px;">
+                                    style="text-align:right;padding-top:4px;padding-bottom:4px;line-height:1.3;">
                                     <span
                                         class="text-nowrap"
                                         t-field="line.price_subtotal"
@@ -178,297 +182,65 @@
                 <attribute name="style">margin-top: 5px;</attribute>
             </xpath>
             <xpath expr="//span[@name='payment_term']" position="after">
-                <div style="font-size:11px; margin-top:15px; page-break-inside: avoid;">
-                    <span style="font-weight:bolder;">Información sobre protección de datos:</span>
-                    Como responsable del tratamiento le informamos que recabamos sus datos con la
-                    finalidad de prestarles el servicio solicitado y emitir la correspondiente
-                    factura del mismo. La base legal para el tratamiento de sus datos es la
-                    ejecución del servicio contratado y la obligación legal de expedir la factura
-                    del mismo. Conservaremos sus datos el tiempo estrictamente necesario para
-                    responder a exigencias legales. Los datos no se cederán a terceros salvo en los
-                    casos en que exista una obligación legal. Puede ejercer sus derechos de acceso,
-                    rectificación, supresión y portabilidad de sus datos, y la limitación u
-                    oposición a su tratamiento a través de nuestro correo electrónico o domicilio
-                    fiscal. De igual modo, podría interponer una reclamación ante la Autoridad de
-                    Control en www.aepd.es. </div>
-                <br />
 
-                <table style="width:100%;border-color:white;">
-                    <tr>
-                        <td>
-                            <div
-                                style="text-align: center;"
-                            >
-                                <t t-if="doc.company_id.id == 1">
-                                    <p
-                                        style="border: 2px solid #C3C7C9; border-radius:20px; display:block;text-align:center; padding:15px 20px; margin-top:5px;font-size:13px; white-space: normal; width: fit-content; margin-left: auto; margin-right: auto;"
-                                    >
-                                        <img src="/ganafote_document_format/static/src/img/crsur.png" alt="Caja Rural" style="height: 13px; margin-right: 6px; vertical-align: middle;" />
-                                        IBAN ES65 3187 0022 6266 8329 0925
-                                        <br/>
-                                        <img src="/ganafote_document_format/static/src/img/santander.png" alt="Santander" style="height: 13px; margin-right: 6px; vertical-align: middle;" />
-                                        IBAN ES74 0049 0012 7123 1219 3764
-                                    </p>
-                                </t>
-                                <t t-if="doc.company_id.id != 1">
-                                    <p
-                                        style="border: 2px solid #222036; border-radius:20px; display:inline-block;text-align:center; padding:10px 20px; margin-top:5px;font-size:13px;white-space:nowrap;"
-                                    >CUENTA GAÑAFOTE SPORTS EVENTS = IBAN ES61 3187 0022 6966 8329 1527
-                                    </p>
-                                </t>
-                            </div>
-                        </td>
-                    </tr>
-                    <t t-if="doc.company_id.id == 1">
+            </xpath>
+            <xpath expr="//div[@id='right-elements']" position="attributes">
+                <attribute name="t-attf-class">#{'col-5' if report_type == 'pdf' else 'col-12 col-md-5'} ms-5 d-inline-block float-end</attribute>
+                <attribute name="style">margin-top:0 !important;</attribute>
+            </xpath>
+            <xpath expr="//div[@id='total']" position="before">
+                <style>
+                    #total table td, #total table th {
+                        padding-top: 2px !important;
+                        padding-bottom: 2px !important;
+                        line-height: 1.25 !important;
+                    }
+                </style>
+            </xpath>
+            <xpath expr="//div[@id='right-elements']" position="after">
+                <div style="clear:both; width:100%; text-align:center; page-break-inside:avoid;">
+                    <table style="width:100%; border-color:white; margin-top:20px;">
                         <tr>
                             <td>
-                                <div style="width:100%;display:block;font-size:13px;">
-                                    <div style="width:100%;margin-top:10px;">
-                                        <div>
-                                            <p
-                                                style="background-color:#C3C7C9;width:50%;display:block;border-radius: 20px;padding: 10px 20px;font-weight:bolder;"
-                                            >Condiciones tras la aceptación del presupuesto
-                                            </p>
-                                        </div>
-                                        <ol>
-                                            <li style="margin-bottom: 15px;">
-                                                El cliente debe saber que las maquetaciones en 3D son una
-                                                aproximación
-                                                al diseño real.
-                                            </li>
-                                            <li style="margin-bottom: 15px;">
-                                                Los colores pueden tener alguna variación respecto al boceto
-                                                digital. El
-                                                cliente debe elegir
-                                                los pantones de color para los productos presupuestados.
-                                            </li>
-                                            <li style="margin-bottom: 15px;">
-                                                El cliente acepta el diseño 3D sabiendo que no podrá sufrir
-                                                variaciones
-                                                tras la aceptación.
-                                                Una vez el pedido es lanzado a fabrica no podrá verse modificado.
-                                            </li>
-                                            <li style="margin-bottom: 15px;">
-                                                El cliente revisará y dará visto bueno al pedido enviado por el área
-                                                de
-                                                administración.
-                                                Cualquier error del mismo, tras la revisión, será responsabilidad
-                                                del
-                                                cliente.
-                                            </li>
-                                            <li style="margin-bottom: 15px;">
-                                                Una vez aceptado el diseño y el pedido correspondiente, GAÑAFOTE SLU
-                                                no
-                                                se hará
-                                                responsable de los posibles errores tanto de ortografía, textos,
-                                                formas,
-                                                color, tamaño, talla,
-                                                logos, etc.
-                                            </li>
-                                            <li style="margin-bottom: 15px;">
-                                                Los tiempos de entregas será de 3 a 4 semanas en &quot;temporada
-                                                normal&quot;.
-                                                Los tiempos de
-                                                entregas puede verse incrementado en 1 o 2 semanas en &quot;temporada
-                                                alta&quot;.
-                                            </li>
-                                            <li style="margin-bottom: 15px;">
-                                                La tabla de medida es una referencia, las medidas para la selección
-                                                de
-                                                tallas pueden variar
-                                                0.50 o 1 cm con respecto al documento que se envía. Las tallas deben
-                                                medirse de la misma
-                                                forma que se indica en el documento.
-                                            </li>
-                                        </ol>
-                                        <div>
-                                            <p
-                                                style="background-color:#C3C7C9;width:50%;display:block;border-radius: 20px;padding: 10px 20px;font-weight:bolder;"
-                                            >Condiciones para tramitación de incidencias
-                                            </p>
-                                        </div>
-                                        <ol>
-                                            <li style="margin-bottom: 15px;">
-                                                El cliente debe verificar los puntos 4 y 5 de la aceptación de
-                                                presupuesto.
-                                            </li>
-                                            <li style="margin-bottom: 15px;">
-                                                Si se sospecha de una incidencia en tallas y medidas, el cliente
-                                                deberá
-                                                tomará las medidas
-                                                como se indica en la tabla de medidas, teniendo en cuenta que la
-                                                prenda
-                                                debe estar bien
-                                                estirada y sin arrugas. Para enviar fotos a su comercial y aclarar
-                                                cualquier situacion.
-                                            </li>
-                                            <li style="margin-bottom: 15px;">
-                                                El comercial podrá solicitarle el envío del producto a las
-                                                instalaciones
-                                                de GAÑAFOTE SLU,
-                                                para su verificación en caso de existir una incidencia.
-                                            </li>
-                                            <li style="margin-bottom: 15px;">
-                                                En caso de existir una incidencia el comercial deberá empezar el
-                                                proceso
-                                                de dicha
-                                                incidencia. El cliente deberá proceder al envió de los productos
-                                                defectuosos, para que
-                                                GAÑAFOTE SLU, haga llegar esos productos a fábrica y se inicié la
-                                                nueva
-                                                producción o
-                                                solución de los problemas ocasionados.
-                                            </li>
-                                            <li style="margin-bottom: 15px;">
-                                                Las incidencia se sacarán en el menor tiempo posible, pero siempre
-                                                sujeto al volumen de
-                                                producción de fábrica.
-                                            </li>
-                                        </ol>
-                                    </div>
+                                <div style="text-align: center;">
+                                    <t t-if="o.company_id.id == 1">
+                                        <p style="border: 2px solid #C3C7C9; border-radius:20px; display:block;text-align:center; padding:15px 20px; margin-top:5px;font-size:13px; white-space: normal; width: fit-content; margin-left: auto; margin-right: auto;">
+                                            <img src="/ganafote_document_format/static/src/img/crsur.png" alt="Caja Rural" style="height: 13px; margin-right: 6px; vertical-align: middle;" />
+                                            IBAN ES65 3187 0022 6266 8329 0925
+                                            <br/>
+                                            <img src="/ganafote_document_format/static/src/img/santander.png" alt="Santander" style="height: 13px; margin-right: 6px; vertical-align: middle;" />
+                                            IBAN ES74 0049 0012 7123 1219 3764
+                                        </p>
+                                    </t>
+                                    <t t-if="doc.company_id.id != 1">
+                                        <p style="border: 2px solid #C3C7C9; border-radius:20px; display:block;text-align:center; padding:15px 20px; margin-top:5px;font-size:13px; white-space: normal; width: fit-content; margin-left: auto; margin-right: auto;">
+                                            <img src="/ganafote_document_format/static/src/img/crsur.png" alt="Caja Rural" style="height: 13px; margin-right: 6px; vertical-align: middle;" />
+                                            IBAN ES61 1318 0022 6966 8329 1527
+                                        </p>
+                                    </t>
                                 </div>
                             </td>
                         </tr>
-                    </t>
-                </table>
-
-<!--                <div style="margin-top:5px; text-align: center; page-break-inside: avoid; display: flex; justify-content: center; flex-wrap: wrap; gap: 10px;">-->
-<!--                    <t t-if="o.company_id.id == 1">-->
-<!--                        &lt;!&ndash; Caixa &ndash;&gt;-->
-<!--                        <div style="border: 2px solid #C3C7C9; border-radius:15px; display:inline-block; text-align:center; padding:10px 12px; margin-top:5px; font-size: 11px;">-->
-<!--                            <img src="/ganafote_document_format/static/src/img/caixa.png" style="height: 35px; margin-bottom: 5px;" />-->
-<!--                            <div style="white-space: normal; max-width: 150px; font-weight: bold;">Caixa</div>-->
-<!--                            <div style="white-space: normal; max-width: 150px; font-size: 10px;">ES65 3187 0022 6266 8329 0925</div>-->
-<!--                        </div>-->
-
-<!--                        &lt;!&ndash; Santander &ndash;&gt;-->
-<!--                        <div style="border: 2px solid #EC1C24; border-radius:15px; display:inline-block; text-align:center; padding:10px 12px; margin-top:5px; font-size: 11px;">-->
-<!--                            <img src="/ganafote_document_format/static/src/img/santander.png" style="height: 35px; margin-bottom: 5px;" />-->
-<!--                            <div style="white-space: normal; max-width: 150px; font-weight: bold;">Santander</div>-->
-<!--                            <div style="white-space: normal; max-width: 150px; font-size: 10px;">ES74 0049 0012 7123 1219 3764</div>-->
-<!--                        </div>-->
-
-<!--                        &lt;!&ndash; Caja Rural &ndash;&gt;-->
-<!--                        <div style="border: 2px solid #1E90FF; border-radius:15px; display:inline-block; text-align:center; padding:10px 12px; margin-top:5px; font-size: 11px;">-->
-<!--                            <img src="/ganafote_document_format/static/src/img/crsur.png" style="height: 35px; margin-bottom: 5px;" />-->
-<!--                            <div style="white-space: normal; max-width: 150px; font-weight: bold;">Caja Rural</div>-->
-<!--                            <div style="white-space: normal; max-width: 150px; font-size: 10px;">ES61 3187 0022 6966 8329 1527</div>-->
-<!--                        </div>-->
-
-<!--                        &lt;!&ndash; Efectivo &ndash;&gt;-->
-<!--                        <div style="border: 2px solid #90EE90; border-radius:15px; display:inline-block; text-align:center; padding:10px 12px; margin-top:5px; font-size: 11px;">-->
-<!--                            <div style="white-space: normal; max-width: 150px; font-weight: bold; margin-bottom: 8px;">💵</div>-->
-<!--                            <div style="white-space: normal; max-width: 150px; font-weight: bold;">Efectivo</div>-->
-<!--                            <div style="white-space: normal; max-width: 150px; font-size: 10px;">Pago en efectivo</div>-->
-<!--                        </div>-->
-<!--                    </t>-->
-<!--                    <t t-if="o.company_id.id == 2">-->
-<!--                        &lt;!&ndash; Caixa &ndash;&gt;-->
-<!--                        <div style="border: 2px solid #222036; border-radius:15px; display:inline-block; text-align:center; padding:10px 12px; margin-top:5px; font-size: 11px;">-->
-<!--                            <img src="/ganafote_document_format/static/src/img/caixa.png" style="height: 35px; margin-bottom: 5px;" />-->
-<!--                            <div style="white-space: normal; max-width: 150px; font-weight: bold;">Caixa</div>-->
-<!--                            <div style="white-space: normal; max-width: 150px; font-size: 10px;">ES65 3187 0022 6266 8329 0925</div>-->
-<!--                        </div>-->
-
-<!--                        &lt;!&ndash; Santander &ndash;&gt;-->
-<!--                        <div style="border: 2px solid #EC1C24; border-radius:15px; display:inline-block; text-align:center; padding:10px 12px; margin-top:5px; font-size: 11px;">-->
-<!--                            <img src="/ganafote_document_format/static/src/img/santander.png" style="height: 35px; margin-bottom: 5px;" />-->
-<!--                            <div style="white-space: normal; max-width: 150px; font-weight: bold;">Santander</div>-->
-<!--                            <div style="white-space: normal; max-width: 150px; font-size: 10px;">ES74 0049 0012 7123 1219 3764</div>-->
-<!--                        </div>-->
-
-<!--                        &lt;!&ndash; Caja Rural &ndash;&gt;-->
-<!--                        <div style="border: 2px solid #1E90FF; border-radius:15px; display:inline-block; text-align:center; padding:10px 12px; margin-top:5px; font-size: 11px;">-->
-<!--                            <img src="/ganafote_document_format/static/src/img/crsur.png" style="height: 35px; margin-bottom: 5px;" />-->
-<!--                            <div style="white-space: normal; max-width: 150px; font-weight: bold;">Caja Rural</div>-->
-<!--                            <div style="white-space: normal; max-width: 150px; font-size: 10px;">ES61 3187 0022 6966 8329 1527</div>-->
-<!--                        </div>-->
-
-<!--                        &lt;!&ndash; Efectivo &ndash;&gt;-->
-<!--                        <div style="border: 2px solid #90EE90; border-radius:15px; display:inline-block; text-align:center; padding:10px 12px; margin-top:5px; font-size: 11px;">-->
-<!--                            <div style="white-space: normal; max-width: 150px; font-weight: bold; margin-bottom: 8px;">💵</div>-->
-<!--                            <div style="white-space: normal; max-width: 150px; font-weight: bold;">Efectivo</div>-->
-<!--                            <div style="white-space: normal; max-width: 150px; font-size: 10px;">Pago en efectivo</div>-->
-<!--                        </div>-->
-<!--                    </t>-->
-<!--                </div>-->
-            </xpath>
-            <!--            <div class="clearfix mb-4">-->
-            <xpath expr="//div[@id='total']" position="replace">
-                <div id="total" class="row">
-                    <div
-                        t-attf-class="#{'col-12' if report_type != 'html' else 'col-sm-8 col-md-7'} ms-auto">
-                        <table class="table table-sm table-borderless"
-                            style="page-break-inside: avoid; margin: 0px; padding: 0px; width: 100%; table-layout: fixed;">
-                            <colgroup>
-                                <col style="width: 68%;" />
-                                <col style="width: 32%;" />
-                            </colgroup>
-
-                            <!--Tax
-                            totals-->
-                            <t t-if="o.tax_totals" t-call="account.document_tax_totals">
-                                <t t-set="tax_totals" t-value="o.tax_totals" />
-                                <t t-set="currency" t-value="o.currency_id or o.company_id.currency_id" />
-                            </t>
-
-                            <!--Payments-->
-                            <t t-if="print_with_payments">
-                                <t t-if="o.payment_state != 'invoicing_legacy'">
-                                    <t t-set="payments_vals"
-                                        t-value="o.sudo().invoice_payments_widget and o.sudo().invoice_payments_widget['content'] or []" />
-                                    <t t-foreach="payments_vals" t-as="payment_vals">
-                                        <tr t-if="payment_vals['is_exchange'] == 0">
-                                            <td style="margin: 0px; padding: 0px; font-size:12px;">
-                                                <i class="oe_form_field text-end oe_payment_label">Pagado
-                                                    el <t t-esc="payment_vals['date']"
-                                                        t-options='{"widget": "date"}' />
-                                                </i>
-                                            </td>
-                                            <td class="text-end"
-                                                style="margin: 0px; padding: 0px; font-size:12px;">
-                                                <span t-esc="payment_vals['amount']"
-                                                    t-options='{"widget": "monetary", "display_currency": o.currency_id}' />
-                                            </td>
-                                        </tr>
-                                    </t>
-                                    <t t-if="len(payments_vals) > 0">
-                                        <tr class="border-black">
-                                            <td style="margin: 0px; padding: 0px; font-size:12px; white-space: nowrap;">Importe adeudado</td>
-                                            <td class="text-end"
-                                                style="margin: 0px; padding: 0px; font-size:12px;">
-                                                <span t-field="o.amount_residual" />
-                                            </td>
-                                        </tr>
-                                    </t>
-                                </t>
-                            </t>
-                        </table>
+                    </table>
+                    <div style="width:100%; font-size:11px; margin-top:15px; text-align:left; page-break-inside:avoid;">
+                        <div>
+                            <p style="background-color:#C3C7C9;width:50%;display:block;border-radius: 20px;padding: 10px 20px;font-weight:bolder;">
+                                Información sobre protección de datos
+                            </p>
+                        </div>
+                        Como responsable del tratamiento le informamos que recabamos sus datos con la
+                        finalidad de prestarles el servicio solicitado y emitir la correspondiente
+                        factura del mismo. La base legal para el tratamiento de sus datos es la
+                        ejecución del servicio contratado y la obligación legal de expedir la factura
+                        del mismo. Conservaremos sus datos el tiempo estrictamente necesario para
+                        responder a exigencias legales. Los datos no se cederán a terceros salvo en los
+                        casos en que exista una obligación legal. Puede ejercer sus derechos de acceso,
+                        rectificación, supresión y portabilidad de sus datos, y la limitación u
+                        oposición a su tratamiento a través de nuestro correo electrónico o domicilio
+                        fiscal. De igual modo, podría interponer una reclamación ante la Autoridad de
+                        Control en www.aepd.es.
                     </div>
                 </div>
-            </xpath>
-            <xpath expr="//div[@id='total']" position="after">
-                <table style="width:100%;border-color:white; margin-top: 20px;">
-                    <tr>
-                        <td>
-                            <div style="text-align: center;">
-                                <t t-if="o.company_id.id == 1">
-                                    <p style="border: 2px solid #C3C7C9; border-radius:20px; display:block;text-align:center; padding:15px 20px; margin-top:5px;font-size:13px; white-space: normal; width: fit-content; margin-left: auto; margin-right: auto;">
-                                        <img src="/ganafote_document_format/static/src/img/crsur.png" alt="Caja Rural" style="height: 13px; margin-right: 6px; vertical-align: middle;" />
-                                        IBAN ES65 3187 0022 6266 8329 0925
-                                        <br/>
-                                        <img src="/ganafote_document_format/static/src/img/santander.png" alt="Santander" style="height: 13px; margin-right: 6px; vertical-align: middle;" />
-                                        IBAN ES74 0049 0012 7123 1219 3764
-                                    </p>
-                                </t>
-                                <t t-if="o.company_id.id != 1">
-                                    <p style="border: 2px solid #222036; border-radius:20px; display:inline-block;text-align:center; padding:10px 20px; margin-top:5px;font-size:13px;white-space:nowrap;">CUENTA GAÑAFOTE SPORTS EVENTS = IBAN ES61 3187 0022 6966 8329 1527
-                                    </p>
-                                </t>
-                            </div>
-                        </td>
-                    </tr>
-                </table>
             </xpath>
         </field>
     </record>
