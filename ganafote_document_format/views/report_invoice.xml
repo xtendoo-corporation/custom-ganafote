@@ -212,7 +212,7 @@
                                             IBAN ES74 0049 0012 7123 1219 3764
                                         </p>
                                     </t>
-                                    <t t-if="doc.company_id.id != 1">
+                                    <t t-if="o.company_id.id != 1">
                                         <p style="border: 2px solid #C3C7C9; border-radius:20px; display:block;text-align:center; padding:15px 20px; margin-top:5px;font-size:13px; white-space: normal; width: fit-content; margin-left: auto; margin-right: auto;">
                                             <img src="/ganafote_document_format/static/src/img/crsur.png" alt="Caja Rural" style="height: 13px; margin-right: 6px; vertical-align: middle;" />
                                             IBAN ES61 1318 0022 6966 8329 1527
