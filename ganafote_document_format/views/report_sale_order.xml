@@ -4,13 +4,16 @@
         inherit_id="sale.report_saleorder_document"
         priority="99"
     >
+        <xpath expr="//t[@t-set='doc']" position="attributes">
+            <attribute name="t-value">doc.with_context(lang='es_ES' if doc.company_id.id == 5 else doc.partner_id.lang)</attribute>
+        </xpath>
         <xpath expr="//t[@t-set='information_block']" position="replace"/>
         <xpath expr="//t[@t-set='layout_document_title']" position="replace">
             <t t-set="layout_document_title">
                 <t t-set="company_color"
-                   t-value="{1: '#C3C7C9', 2: '#222036', 3: '#aeef9a', 4: '#bf954b'}.get(doc.company_id.id, '#222036')" />
+                   t-value="{1: '#C3C7C9', 2: '#222036', 3: '#aeef9a', 4: '#bf954b', 5: '#32b33c'}.get(doc.company_id.id, '#222036')" />
                 <t t-set="colorbackground"
-                   t-value="'color:#ffffff; background-color:%s; display:inline-block;border-radius: 20px; padding: 7.5px 10px;' % company_color" />
+                   t-value="'color:%s; background-color:%s; display:inline-block;border-radius: 20px; padding: 7.5px 10px;' % ('#000000' if doc.company_id.id == 5 else '#ffffff', company_color)" />
                 <span t-att-style="colorbackground">
                     <t t-if="not (env.context.get('proforma', False) or is_pro_forma)">
                         <span
