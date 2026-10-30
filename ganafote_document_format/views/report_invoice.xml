@@ -7,10 +7,10 @@
             <xpath expr="//t[@t-set='layout_document_title']" position="replace">
 
                 <t t-set="company_color"
-                    t-value="{1: '#C3C7C9', 2: '#222036', 3: '#aeef9a', 4: '#bf954b'}.get(o.company_id.id, '#222036')" />
+                    t-value="{1: '#C3C7C9', 2: '#222036', 3: '#000000', 4: '#bf954b'}.get(o.company_id.id, '#222036')" />
                 <t t-set="is_gnf_global" t-value="o.company_id.id == 3" />
                 <t t-set="colorbackground"
-                    t-value="'color:#000000; display:inline-block; padding: 5px 0;' if is_gnf_global else 'color:#ffffff; background-color:%s; display:inline-block;border-radius: 20px; padding: 5px 10px;' % company_color" />
+                    t-value="'color:#ffffff; background-color:%s; display:inline-block;border-radius: 20px; padding: 5px 10px;' % company_color" />
 
                 <t t-set="layout_document_title">
                     <span t-att-style="colorbackground">
