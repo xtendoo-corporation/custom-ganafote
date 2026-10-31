@@ -231,7 +231,7 @@
                     </table>
                     <div style="width:100%; font-size:11px; margin-top:15px; text-align:left; page-break-inside:avoid;">
                         <div>
-                            <p t-attf-style="background-color:#{'#F4A6A6' if is_gnf_global else '#C3C7C9'};width:50%;display:block;border-radius: 20px;padding: 10px 20px;font-weight:bolder;">
+                            <p t-attf-style="background-color:#{company_color if o.company_id.id in (3, 4) else '#C3C7C9'};width:50%;display:block;border-radius: 20px;padding: 10px 20px;font-weight:bolder;">
                                 Información sobre protección de datos
                             </p>
                         </div>
